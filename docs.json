@@ -1,221 +1,122 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Bvndle LAAS Docs",
+  "name": "Mint Starter Kit",
   "colors": {
-    "primary": "#6B3B90",
-    "dark": "#492669",
-    "light": "#9176a1"
-  },
-  "appearance": {
-    "default": "light",
-    "strict": true
+    "primary": "#16A34A",
+    "light": "#07C983",
+    "dark": "#15803D"
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "pages": [
+    "tabs": [
       {
-        "group": "Bvndle Developers",
-        "pages": ["bvndle-developers"]
-      },
-      {
-        "group": "Bvndle LAAS",
-        "pages": [
-          "get-started",
+        "tab": "Guides",
+        "groups": [
           {
-            "group": "Onboarding",
+            "group": "Getting started",
             "pages": [
-              "onboarding/onboarding",
-              "onboarding/authentication",
-              "onboarding/remove-single-user",
-              "onboarding/remove-bulk-users"
+              "index",
+              "quickstart",
+              "development"
             ]
           },
           {
-            "group": "Rules Engine",
+            "group": "Customization",
             "pages": [
-              "rules-engine/create-rules",
-              "rules-engine/edit-rules",
-              "rules-engine/award",
-              "rules-engine/get-all-rules",
-              "rules-engine/get-a-rule"
+              "essentials/settings",
+              "essentials/navigation"
             ]
           },
           {
-            "group": "Gift Card",
-            "pages": ["gift-card/create-gift-card"]
-          },
-          {
-            "group": "Coins",
+            "group": "Writing content",
             "pages": [
-              "coins/get-coin-balance",
-              "coins/get-partner-specific-coin-for-user",
-              "coins/get-user-transaction-history",
-              "coins/get-leaderboard",
-              "coins/user-partner-coin-redemption",
-              "coins/partner-user-coin-redemption",
-              "coins/debit-multiple-wallets"
+              "essentials/markdown",
+              "essentials/code",
+              "essentials/images",
+              "essentials/reusable-snippets"
             ]
           },
           {
-            "group": "Trending Deals",
-            "pages": ["trending-deals/get-url"]
-          },
-          {
-            "group": "Webhook",
+            "group": "AI tools",
             "pages": [
-              "webhook/onboarding",
-              "webhook/coin-debit",
-              "webhook/coin-credit"
+              "ai-tools/cursor",
+              "ai-tools/claude-code",
+              "ai-tools/windsurf"
             ]
           }
         ]
       },
       {
-        "group": "Bvndle SSO",
-        "pages": [
-          "bvndle-sso/get-started-web",
-          "bvndle-sso/get-started-mobile",
-          "bvndle-sso/onboard-partners",
-          "bvndle-sso/partner-login",
-          "bvndle-sso/update-partners-details",
-          "bvndle-sso/create-authorization-code",
-          "bvndle-sso/get-sso-access-token",
-          "bvndle-sso/create-tag",
-          "bvndle-sso/verify-tag",
-          "bvndle-sso/get-user-tag",
-          "bvndle-sso/link-bvndle-to-laas"
-        ]
-      },
-      {
-        "group": "Bvndle Gamification",
-        "pages": [
-          "bvndle-gamification/authentication",
+        "tab": "API reference",
+        "groups": [
           {
-            "group": "Missions",
+            "group": "API documentation",
             "pages": [
-              "bvndle-gamification/missions/create-mission",
-              "bvndle-gamification/missions/get-mission",
-              "bvndle-gamification/missions/get-missions",
-              "bvndle-gamification/missions/update-mission",
-              "bvndle-gamification/missions/start-mission",
-              "bvndle-gamification/missions/complete-mission",
-              "bvndle-gamification/missions/user-active-missions",
-              "bvndle-gamification/missions/active-missions",
-              "bvndle-gamification/missions/activity-log"
+              "api-reference/introduction"
             ]
           },
           {
-            "group": "User Tier",
+            "group": "Endpoint examples",
             "pages": [
-              "bvndle-gamification/user-tier/create-user-tier",
-              "bvndle-gamification/user-tier/get-user-tier",
-              "bvndle-gamification/user-tier/get-all-user-tier",
-              "bvndle-gamification/user-tier/delete-user-tier",
-              "bvndle-gamification/user-tier/update-user-tier",
-              "bvndle-gamification/user-tier/upgrade-user-tier",
-              "bvndle-gamification/user-tier/set-first-tier-to-user"
-            ]
-          },
-          "bvndle-gamification/get-leaderboard",
-          {
-            "group": "Raffles",
-            "pages": [
-              "bvndle-gamification/raffles/get-raffles",
-              "bvndle-gamification/raffles/get-raffle",
-              "bvndle-gamification/raffles/create-raffle",
-              "bvndle-gamification/raffles/end-raffle",
-              "bvndle-gamification/raffles/get-active-raffle",
-              "bvndle-gamification/raffles/pause-raffle",
-              "bvndle-gamification/raffles/resume-raffle",
-              "bvndle-gamification/raffles/get-entry-fee",
-              "bvndle-gamification/raffles/join-raffle",
-              "bvndle-gamification/raffles/winner-leaderboard"
-            ]
-          },
-          {
-            "group": "Spin Wheel",
-            "pages": [
-              "bvndle-gamification/spin-wheel/get-spin-wheels",
-              "bvndle-gamification/spin-wheel/get-a-spin-wheel",
-              "bvndle-gamification/spin-wheel/get-active-spin-wheel",
-              "bvndle-gamification/spin-wheel/create-spin-wheel",
-              "bvndle-gamification/spin-wheel/manage-wheel-prize",
-              "bvndle-gamification/spin-wheel/update-spin-wheel-prize",
-              "bvndle-gamification/spin-wheel/spin-wheel",
-              "bvndle-gamification/spin-wheel/spin-wheel-history"
-            ]
-          },
-          {
-            "group": "Streaks",
-            "pages": [
-              "bvndle-gamification/streaks/create-streak",
-              "bvndle-gamification/streaks/get-streak",
-              "bvndle-gamification/streaks/update-streak",
-              "bvndle-gamification/streaks/update-streak-reward",
-              "bvndle-gamification/streaks/create-daily-streak-reward",
-              "bvndle-gamification/streaks/get-streaks",
-              "bvndle-gamification/streaks/get-streak-rewards",
-              "bvndle-gamification/streaks/add-reward-for-streak",
-              "bvndle-gamification/streaks/award-streak-rule",
-              "bvndle-gamification/streaks/all-streaks-users",
-              "bvndle-gamification/streaks/get-user-streaks"
-            ]
-          },
-          {
-            "group": "Badges",
-            "pages": [
-              "bvndle-gamification/badge/create-badge",
-              "bvndle-gamification/badge/get-partner-badges",
-              "bvndle-gamification/badge/get-badge",
-              "bvndle-gamification/badge/update-badge"
-            ]
-          },
-          {
-            "group": "Tickets",
-            "pages": [
-              "bvndle-gamification/tickets/create-ticket",
-              "bvndle-gamification/tickets/get-tickets",
-              "bvndle-gamification/tickets/get-ticket",
-              "bvndle-gamification/tickets/update-ticket",
-              "bvndle-gamification/tickets/get-user-ticket"
-            ]
-          },
-          {
-            "group": "Special Campaign",
-            "pages": [
-              "bvndle-gamification/special-campaign/create-special-campaign",
-              "bvndle-gamification/special-campaign/get-special-campaign",
-              "bvndle-gamification/special-campaign/get-partner-special-campaigns",
-              "bvndle-gamification/special-campaign/stop-special-campaign",
-              "bvndle-gamification/special-campaign/get-participants"
+              "api-reference/endpoint/get",
+              "api-reference/endpoint/create",
+              "api-reference/endpoint/delete",
+              "api-reference/endpoint/webhook"
             ]
           }
         ]
       }
-    ]
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Documentation",
+          "href": "https://mintlify.com/docs",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "Blog",
+          "href": "https://mintlify.com/blog",
+          "icon": "newspaper"
+        }
+      ]
+    }
   },
   "logo": {
-    "light": "/logo/Bvndle Doc Logo.png",
-    "dark": "/logo/Bvndle Doc Logo.png"
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
   },
   "navbar": {
     "links": [
       {
-        "label": "Go to Website",
-        "href": "https://partner.bvndle.com/"
+        "label": "Support",
+        "href": "mailto:hi@mintlify.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Sign up",
-      "href": "https://partner.bvndle.com/"
+      "label": "Dashboard",
+      "href": "https://dashboard.mintlify.com"
     }
+  },
+  "contextual": {
+    "options": [
+     "copy",
+     "view",
+     "chatgpt",
+     "claude",
+     "perplexity",
+     "mcp",
+     "cursor",
+     "vscode"
+   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/trybvndle",
-      "linkedin": "https://www.linkedin.com/company/trybvndle/about/"
+      "x": "https://x.com/mintlify",
+      "github": "https://github.com/mintlify",
+      "linkedin": "https://linkedin.com/company/mintlify"
     }
   }
 }
