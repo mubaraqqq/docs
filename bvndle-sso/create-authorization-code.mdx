@@ -1,0 +1,147 @@
+---
+title: Create Authorization Code
+description: "Call this endpoint to get authorization code from the auth server"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption:
+        "https://test-api.bvndle.com/api/v1/ufel/users/authorization/authorization-code?scope=profile",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement
+  label="Query Parameter"
+/>
+<Table
+  data={[
+    {
+      name: "deviceType",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          This is an optional query parameter that decides the type of redirectUrl that returns (either web or mobile).
+          If it is absent, the value of the redirectUrl column returns <br /><br />
+          Enum: web or mobile
+        </>
+      ),
+    },
+    {
+      name: "scope",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          This is an optional query param that decides the user data that is returned from the
+          resource server. scope can either be any combination of email, fullname, or profile <br />
+          Default: profile
+        </>
+      ),
+    },
+
+]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "clientId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          This is generated after the partner onboards on SSO. This is embedded in
+          the device
+        </>
+      ),
+    },
+    {
+      name: "tag",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Unique tag of user's choice
+        </>
+      ),
+    },
+    {
+      name: "password",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Password must contain at least 8 characters, one uppercase, one number
+          and one special case character.
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/ufel/users/authorization/authorization-code?scope=profile' \
+--header 'Content-Type: application/json' \
+
+{
+    "clientId": "0e45faa1385f8b3e4f2912a9fe9fddd3937b4ae52782ca5b8d644915e58de2d7ec8bf68a9fa844234e4f79ee8afd116ee35f3a9ffc6ac2d92f0a71656a6f4853",
+    "tag": "j.hope",
+    "password": "P@ssword1"
+}
+
+```
+
+###
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "RedirectUrl and authorization code fetched successfully",
+  "data": {
+    "redirectUrl": "google.com?authorization-code=W2H347C8D1VYISL919U4"
+  }
+}
+```
+
+```json Error 400
+{
+  "status": "failed",
+  "message": "invalid data provided",
+  "data": {
+    "errorType": "invalid",
+    "appErrorCode": "",
+    "error": "Email/Tag or Password Incorrect"
+  }
+}
+```
+
+</ResponseExample>

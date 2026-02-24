@@ -1,0 +1,123 @@
+---
+title: Create Ticket
+description: "This endpoint is used to create a ticket"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/tickets",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Name of the ticket
+        </>
+      ),
+    },
+    {
+      name: "description",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The description of the ticket
+        </>
+      ),
+    },
+    {
+      name: "code",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          Ticket code
+        </>
+      ),
+    },
+    {
+      name: "expiryDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+          This is the expiry date of the ticket
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/tickets' \
+
+{
+  "status": "success",
+  "message": "ticket created",
+  "data": {
+    "id": "b1127b1d-df3a-45db-88f0-26458ad15a4a",
+    "partner": {},
+    "name": "Raffle ticket",
+    "description": "Hello world!!",
+    "status": "active",
+    "code": "12345678",
+    "expiryDate": null,
+    "createdAt": "2025-10-08T19:21:12.786Z",
+    "updatedAt": "2025-10-08T19:21:12.786Z"
+  }
+}
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "badge created",
+  "data": {
+    "id": "855d98d9-274e-4bbd-b2a6-622ff0cdf9f8",
+    "name": "dark ninja warrior",
+    "description": "Testing!!!",
+    "partner": {},
+    "icon": null
+  }
+}
+```
+
+</ResponseExample>

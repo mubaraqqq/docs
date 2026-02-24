@@ -1,0 +1,124 @@
+---
+title: Getting Started - Mobile
+---
+
+import { NoteStatement } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+import { List } from "/snippets/list-step.mdx";
+
+Welcome to Bvndle SSO. With our API, you can access shared data within the ecosystem
+
+###
+
+<NoteStatement
+  message={
+    <p style={{ marginBlock: 0 }}>
+      Set up Deeplink schema or universal link in your application and add it as
+      a{" "}
+      <strong>
+        <em>mobileRedirectUrl</em>
+      </strong>{" "}
+      while onboarding as a Partner with Bvndle. See documentation{" "}
+      <a href="https://bvndle.mintlify.app/bvndle-sso/onboard-partners">
+        https://bvndle.mintlify.app/bvndle-sso/onboard-partners
+      </a>
+      .
+    </p>
+  }
+/>
+
+###
+
+<List
+  number={1}
+  title={
+    <p style={{ marginBlock: 0 }}>
+      Set up an In-App Browser that redirects back to the APP when the URL
+      changes to{" "}
+      <strong>
+        <em>redirectUrl</em>
+      </strong>
+    </p>
+  }
+/>
+
+####
+
+<List
+  number={2}
+  title={
+    <p style={{ marginBlock: 0 }}>
+      Integrate the Bvndle SSO workflow using the official NPM package{" "}
+      <a
+        style={{ fontSize: "14px" }}
+        href="https://www.npmjs.com/package/@bvndle/sso-client"
+      >
+        npm: @bvndle/sso-client
+      </a>{" "}
+      or open the In-App Browser pointing to{" "}
+      <a
+        style={{ fontSize: "14px" }}
+        href="
+      https://dev-vfd-sso.netlify.app/?client_id=$BVNDLE_CLIENT_ID&scope=$SCOPE&device_type=$DEVICE_TYPE"
+      >
+        https://dev-vfd-sso.netlify.app/?client_id=$BVNDLE_CLIENT_ID&
+        <br />
+        scope=$SCOPE&device_type=$DEVICE_TYPE
+      </a>
+    </p>
+  }
+  caption={
+    <ul>
+      <li>
+        <strong>client_id</strong>: Represents the clientId created after
+        partner registration.
+      </li>
+      <li>
+        <strong>scope</strong>: <em>(optional)</em> Determines the user data
+        that is returned (email, fullname, or profile). Defaults to{" "}
+        <strong>profile</strong>.
+      </li>
+      <li>
+        <strong>device_type</strong>: <em>(optional)</em> Determines the type of
+        redirectUrl returned (web or mobile). Defaults to <strong>web</strong>.
+      </li>
+      <li>
+        <strong>image</strong>: <em>(optional)</em> Determines whether you want
+        the avatar in base64 format. For base64, send image=base64. Defaults to{" "}
+        <strong>null</strong>.
+      </li>
+    </ul>
+  }
+/>
+
+####
+
+<List
+  number={3}
+  title={
+    <p style={{ marginBlock: 0 }}>
+      If the user TAG & PASSWORD is validated, the In-App Browser URL changes
+      to:{" "}
+      <strong>
+        <em>redirectUrl/?authorization-code=NYFFS72HS9G</em>
+      </strong>
+      . At this point it redirects back to the APP while returning the URL.
+    </p>
+  }
+/>
+
+####
+
+<List
+  number={4}
+  title={
+    <p style={{ marginBlock: 0 }}>
+      Next, run the Get SSO Token endpoint passing authorizationCode as the
+      params. See documentation{" "}
+      <a href="https://bvndle.mintlify.app/bvndle-sso/get-sso-access-token">
+        https://bvndle.mintlify.app/bvndle-sso/get-sso-access-token
+      </a>
+      .
+    </p>
+  }
+/>

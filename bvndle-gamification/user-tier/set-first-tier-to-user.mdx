@@ -1,0 +1,87 @@
+---
+title: Set First Tier to User
+description: "This endpoint is used to set the first tier for a user"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/user/add-tier",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "userId",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          ID of the user
+        </>
+      ),
+    },
+    {
+      name: "partnerId",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          ID of the partner
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/user/add-tier' \
+--header 'Content-Type: application/json' \
+
+{
+    "userId": "ceede6ba-bc5b-460b-a056-b28e5bce803b",
+    "partnerId": "0463c990-3b8b-4cb4-b0bc-b08aa0d88d93"
+}
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "tier added",
+  "data": {}
+}
+```
+
+</ResponseExample>

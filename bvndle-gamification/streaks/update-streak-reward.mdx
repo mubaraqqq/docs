@@ -1,0 +1,94 @@
+---
+title: Update Streak Reward
+description: "This endpoint is used to update a streak reward"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption:
+        "https://test-api.bvndle.com/api/v1/laas/streaks/:streakId/rewards/:rewardId",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "PUT",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "amount",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "type",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request PUT
+'https://test-api.bvndle.com/api/v1/laas/streaks/1c865ca9-2df1-4d36-8f5b-fb5f33dc7f70/rewards/14c7655e-db11-4741-9c16-a4d3300a2206' \' \
+--header 'Content-Type: application/json' \
+
+{
+    "amount": 2
+    // "type": "airtime"
+}
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "reward updated",
+  "data": {
+    "id": "14c7655e-db11-4741-9c16-a4d3300a2206",
+    "reward": 2,
+    "type": "coins",
+    "streak": {},
+    "createdAt": "2025-09-15T21:09:52.811Z",
+    "updatedAt": "2025-09-15T22:30:52.654Z"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,99 @@
+---
+title: Update Badge
+description: "This endpoint is used to update a badge"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/badges/:id",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "PUT",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Name of the badge
+        </>
+      ),
+    },
+    {
+      name: "description",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The description of the badge
+        </>
+      ),
+    },
+    {
+      name: "badgeIcon",
+      type: "file or string",
+      desc: (
+        <>
+          Optional <br />
+          The Icon of the badge
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request PUT
+'https://test-api.bvndle.com/api/v1/laas/badges/34d48345-18ab-4ba0-b9b7-07a7bf767666' \
+--form 'name="dark ninja warrior"' \
+--form 'description="Testing!!!"'
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "badge updated",
+  "data": {
+    "id": "34d48345-18ab-4ba0-b9b7-07a7bf767666",
+    "name": "shadow ninja",
+    "partner": {},
+    "icon": null
+  }
+}
+```
+
+</ResponseExample>

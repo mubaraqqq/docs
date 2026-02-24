@@ -1,0 +1,133 @@
+---
+title: "Get all Rules"
+description: "Get all created Rules with this endpoint. You can also filter by status."
+---
+
+####
+
+import { URLBlock } from "/snippets/url-block.mdx";
+
+<URLBlock
+  url="https://test-api.bvndle.com/api/v1/laas/rules"
+  content={[
+    { title: "HTTP Method", caption: "GET" },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+####
+
+import { Table } from "/snippets/custom-component.mdx";
+
+<Table
+  data={[
+    {
+      name: "limit",
+      type: "number",
+      desc: "Optional - Maximum number of record to get",
+    },
+    {
+      name: "page",
+      type: "number",
+      desc: "Optional",
+    },
+    {
+      name: "status",
+      type: "string",
+      desc: "Optional - Status To Filter By e.g active e.g inactive",
+    },
+  ]}
+/>
+
+```bash cURL
+curl --request GET 'https://test-api.bvndle.com/api/v1/laas/rules/create-rule' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer ACCESS_TOKEN' \
+--data-raw '{
+  "name": "Transaction Drive",
+  "coinValue": "10",
+  "maxNumberOfParticipant": "20000",
+  "condition": "User makes 5 transactions"
+}
+{
+  "userId": "f0c8c81d-13d3-4515-b40f-711ef91de094",
+  "ruleName": "transaction drive"
+}'
+```
+
+### URLs
+
+```bash Get All (Uses default limit and page)
+https://test-api.bvndle.com/api/v1/laas/rules
+```
+
+```bash Get All with your limit and Page
+https://test-api.bvndle.com/api/v1/laas/rules?limit=100&page=1
+```
+
+```bash Get Active Rules
+https://test-api.bvndle.com/api/v1/laas/rules?limit=100&page=1
+```
+
+```bash Get Inactive Rules
+https://test-api.bvndle.com/api/v1/laas/rules?limit=100&page=1
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "request successful",
+  "data": {
+    "data": [
+      {
+        "id": "bddd3fec-edbd-4fd9-8519-07d4a309d395",
+        "name": "edited rule name",
+        "coinValue": "10",
+        "condition": "user writes 5 lines",
+        "maxNumberOfParticipant": "20000",
+        "status": "active",
+        "userId": "e84fbe98-5dfa-4294-b39f-72ae0a5e1db4"
+      },
+      {
+        "id": "35d7f062-e1c8-4285-82a9-065716cee46c",
+        "name": "ogogoro",
+        "coinValue": "5000",
+        "condition": "drink 5litres of eagle schnapps",
+        "maxNumberOfParticipant": "10",
+        "status": "active",
+        "userId": "e84fbe98-5dfa-4294-b39f-72ae0a5e1db4"
+      },
+      {
+        "id": "8b2be577-3d0a-4c95-96b2-5bb687de6215",
+        "name": "signup drive edited",
+        "coinValue": "20",
+        "condition": "Create account on our app",
+        "maxNumberOfParticipant": "30000",
+        "status": "inactive",
+        "userId": "e84fbe98-5dfa-4294-b39f-72ae0a5e1db4"
+      },
+      {
+        "id": "83ca0a27-9c42-4d3c-8455-ddb185082ed8",
+        "name": "transaction drive",
+        "coinValue": "10",
+        "condition": "user makes 5 transactions",
+        "maxNumberOfParticipant": "2",
+        "status": "active",
+        "userId": "e84fbe98-5dfa-4294-b39f-72ae0a5e1db4"
+      }
+    ],
+    "count": 4,
+    "currentpage": 1,
+    "nextpage": null,
+    "prevpage": null,
+    "lastpage": 1
+  }
+}
+```
+
+</ResponseExample>

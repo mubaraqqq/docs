@@ -1,0 +1,135 @@
+---
+title: Update User Tier
+description: "This endpoint is used to updates details of the user tier"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/user-tiers/:id",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "PUT",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Name of the tier
+        </>
+      ),
+    },
+    {
+      name: "perks",
+      type: "array",
+      desc: (
+        <>
+          Optional <br />
+          List of perks under the user tier
+        </>
+      ),
+    },
+    {
+      name: "missions",
+      type: "array",
+      desc: (
+        <>
+          Optional <br />
+          List of mission IDs that must be fulfilled before progressing to the next
+          tier
+        </>
+      ),
+    },
+    {
+      name: "isFirst",
+      type: "boolean",
+      desc: (
+        <>
+          Optional <br />
+          Used to indicate if this is the first tier <br />
+          Default: false
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request PUT
+'https://test-api.bvndle.com/api/v1/laas/user-tiers/07d205a5-fde5-4fc6-a886-4f0a7d647e96' \
+--header 'Content-Type: application/json' \
+
+{
+    "name": "amateur",
+    "perks": [
+        "monthly data bundle"
+    ],
+    "missions": [
+        "6292cad2-fcd2-4b58-92ca-850ca7c64ac9"
+    ],
+    "isFirst": true
+}
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "user tier updated",
+  "data": {
+    "id": "6f4976be-5616-49e3-8643-ff125cc51e94",
+    "name": "amateur",
+    "perks": ["daily raffle", "10mb daily", "250mins on calls"],
+    "partner": {},
+    "createdAt": "2025-08-05T07:50:03.685Z",
+    "updatedAt": "2025-08-05T07:50:03.685Z",
+    "missions": [
+      {
+        "id": "6292cad2-fcd2-4b58-92ca-850ca7c64ac9",
+        "name": "monthly data purchase",
+        "description": "Recharge data monthly",
+        "pointsReward": 2,
+        "startDate": "2025-08-05T23:00:00.000Z",
+        "endDate": "2025-08-14T23:00:00.000Z",
+        "createdAt": "2025-08-06T22:43:31.045Z",
+        "updatedAt": "2025-08-06T22:44:20.693Z",
+        "partner": {}
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>

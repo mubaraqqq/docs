@@ -1,0 +1,180 @@
+---
+title: Add Reward for Streak
+description: "This endpoint is used to update a streak reward"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/streaks/:id/rewards",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "PUT",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Name of the mission
+        </>
+      ),
+    },
+    {
+      name: "type",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Type of the mission
+        </>
+      ),
+    },
+    {
+      name: "rewards",
+      type: "array",
+      desc: (
+        <>
+          Required <br />
+        </>
+      ),
+    },
+    {
+      name: "rewards.ticketId",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          The ID of the tickets
+        </>
+      ),
+    },
+    {
+      name: "rewards.amount",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          When the type is not "ticket"
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request PUT
+'https://test-api.bvndle.com/api/v1/laas/streaks/998bd723-3d40-48d4-a896-b7eca283aafe/rewards' \
+--header 'Content-Type: application/json' \
+
+{
+    "rewards": [
+        {
+            "ticketId": "36a2ed79-42fd-4ea7-b558-a4869adf726f",
+            "type": "ticket"
+        }
+    ]
+}
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "reward added",
+  "data": {
+    "id": "998bd723-3d40-48d4-a896-b7eca283aafe",
+    "name": "login_streak",
+    "partner": {},
+    "rewards": [
+      {
+        "id": "3c57f792-b2cd-4710-8fed-2c364fb95600",
+        "reward": 20,
+        "type": "coins",
+        "ticket": {
+          "partner": {}
+        },
+        "streak": {},
+        "createdAt": "2025-09-17T18:20:44.527Z",
+        "updatedAt": "2025-09-17T18:20:44.527Z"
+      },
+      {
+        "id": "5afe15ac-69bb-4a68-9037-048d953f94e6",
+        "reward": 2000,
+        "type": "airtime",
+        "ticket": {
+          "partner": {}
+        },
+        "streak": {},
+        "createdAt": "2025-09-17T18:20:44.564Z",
+        "updatedAt": "2025-09-17T18:20:44.564Z"
+      },
+      {
+        "id": "38a329a1-225f-4533-81de-8117c306fd68",
+        "reward": 50,
+        "type": "coins",
+        "ticket": {
+          "partner": {}
+        },
+        "streak": {},
+        "createdAt": "2025-09-17T18:21:16.382Z",
+        "updatedAt": "2025-09-17T18:21:16.382Z"
+      },
+      {
+        "id": "828218d6-9895-45c4-9e2e-e52d347bc1c0",
+        "reward": null,
+        "type": "ticket",
+        "ticket": {
+          "id": "36a2ed79-42fd-4ea7-b558-a4869adf726f",
+          "partner": {},
+          "status": "active",
+          "code": "6138411414",
+          "expiryDate": "2025-10-19T23:00:00.000Z",
+          "createdAt": "2025-10-04T19:15:11.321Z",
+          "updatedAt": "2025-10-04T19:15:11.321Z"
+        },
+        "streak": {},
+        "createdAt": "2025-10-06T16:57:30.836Z",
+        "updatedAt": "2025-10-06T16:57:30.836Z"
+      }
+    ],
+    "dailyRewards": [],
+    "createdAt": "2025-09-17T18:20:44.459Z",
+    "updatedAt": "2025-09-17T18:20:44.459Z"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,282 @@
+---
+title: Activity Log
+description: "This endpoint returns the history of the missions"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/missions/history",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+<Table
+  data={[
+    {
+      name: "page",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "take",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "sortDirection",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Values: desc, asc <br />
+          Default: desc
+        </>
+      ),
+    },
+    {
+      name: "tierID",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          ID of the tier
+        </>
+      ),
+    },
+    {
+      name: "status",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Values: in_progress, completed
+        </>
+      ),
+    },
+    {
+      name: "search",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "startDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "endDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/missions/history?page=1&take=10&sortDirection=desc&startDate=2025-01-01&endDate=2025-12-30' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "user mission history",
+  "data": {
+    "data": [
+      {
+        "id": "cb87269d-06d2-4db7-b476-191d184bc8d1",
+        "user": {
+          "id": "4ee5158d-ba13-43a6-8b38-e232e6a2a51e",
+          "userId": "ceede6ba-bc5b-460b-a056-b28e5bce803b",
+          "partner": {},
+          "userData": null,
+          "createdAt": "2025-03-04T20:04:05.051Z",
+          "updatedAt": "2025-03-04T20:04:05.051Z",
+          "tier": {}
+        },
+        "mission": {
+          "id": "07d205a5-fde5-4fc6-a886-4f0a7d647e96",
+          "name": "daily data purchase",
+          "description": "Recharge data daily",
+          "pointsReward": 1,
+          "startDate": "2025-08-05T23:00:00.000Z",
+          "endDate": "2025-10-14T23:00:00.000Z",
+          "createdAt": "2025-08-07T17:20:02.716Z",
+          "updatedAt": "2025-08-31T11:14:46.612Z",
+          "partner": {}
+        },
+        "progress": "in_progress",
+        "completedAt": null,
+        "createdAt": "2025-08-31T11:14:50.976Z",
+        "updatedAt": "2025-08-31T11:14:50.976Z"
+      },
+      {
+        "id": "f2d5c1c6-fcfe-482d-89a7-25c97b39290b",
+        "user": {
+          "id": "4d86fdff-f3f6-4792-8c81-ef44feac1ba7",
+          "userId": "02731314-e354-418a-8c7f-6f4b3a1ead6d",
+          "partner": {},
+          "userData": null,
+          "createdAt": "2025-03-25T21:11:38.149Z",
+          "updatedAt": "2025-08-13T23:24:56.492Z",
+          "tier": {
+            "id": "6f4976be-5616-49e3-8643-ff125cc51e94",
+            "name": "amateur",
+            "perks": ["daily raffle", "10mb daily", "250mins on calls"],
+            "partner": {},
+            "createdAt": "2025-08-05T07:50:03.685Z",
+            "updatedAt": "2025-08-13T21:15:52.260Z",
+            "missions": [],
+            "isFirst": false
+          }
+        },
+        "mission": {
+          "id": "7310c56e-6f11-4c87-b97f-cf4ee112f6b7",
+          "name": "weekly data purchase",
+          "description": "Recharge data daily",
+          "pointsReward": 1,
+          "startDate": "2025-08-05T23:00:00.000Z",
+          "endDate": "2025-08-14T23:00:00.000Z",
+          "createdAt": "2025-08-11T17:41:10.585Z",
+          "updatedAt": "2025-08-11T17:41:10.585Z",
+          "partner": {}
+        },
+        "progress": "in_progress",
+        "completedAt": "2025-08-11T18:41:26.451Z",
+        "createdAt": "2025-08-11T17:41:20.994Z",
+        "updatedAt": "2025-08-11T17:41:26.455Z"
+      },
+      {
+        "id": "7d61ab48-25fb-4493-8405-e630a1b0576c",
+        "user": {
+          "id": "4d86fdff-f3f6-4792-8c81-ef44feac1ba7",
+          "userId": "02731314-e354-418a-8c7f-6f4b3a1ead6d",
+          "partner": {},
+          "userData": null,
+          "createdAt": "2025-03-25T21:11:38.149Z",
+          "updatedAt": "2025-08-13T23:24:56.492Z",
+          "tier": {
+            "id": "6f4976be-5616-49e3-8643-ff125cc51e94",
+            "name": "amateur",
+            "perks": ["daily raffle", "10mb daily", "250mins on calls"],
+            "partner": {},
+            "createdAt": "2025-08-05T07:50:03.685Z",
+            "updatedAt": "2025-08-13T21:15:52.260Z",
+            "missions": [],
+            "isFirst": false
+          }
+        },
+        "mission": {
+          "id": "6292cad2-fcd2-4b58-92ca-850ca7c64ac9",
+          "name": "monthly data purchase",
+          "description": "Recharge data monthly",
+          "pointsReward": 2,
+          "startDate": "2025-08-05T23:00:00.000Z",
+          "endDate": "2025-08-14T23:00:00.000Z",
+          "createdAt": "2025-08-06T22:43:31.045Z",
+          "updatedAt": "2025-08-06T22:44:20.693Z",
+          "partner": {}
+        },
+        "progress": "in_progress",
+        "completedAt": "2025-08-09T15:02:11.148Z",
+        "createdAt": "2025-08-09T14:02:06.191Z",
+        "updatedAt": "2025-08-09T14:02:11.150Z"
+      },
+      {
+        "id": "ddd26b83-faab-41b3-b017-955002ac04e1",
+        "user": {
+          "id": "4d86fdff-f3f6-4792-8c81-ef44feac1ba7",
+          "userId": "02731314-e354-418a-8c7f-6f4b3a1ead6d",
+          "partner": {},
+          "userData": null,
+          "createdAt": "2025-03-25T21:11:38.149Z",
+          "updatedAt": "2025-08-13T23:24:56.492Z",
+          "tier": {
+            "id": "6f4976be-5616-49e3-8643-ff125cc51e94",
+            "name": "amateur",
+            "perks": ["daily raffle", "10mb daily", "250mins on calls"],
+            "partner": {},
+            "createdAt": "2025-08-05T07:50:03.685Z",
+            "updatedAt": "2025-08-13T21:15:52.260Z",
+            "missions": [],
+            "isFirst": false
+          }
+        },
+        "mission": {
+          "id": "07d205a5-fde5-4fc6-a886-4f0a7d647e96",
+          "name": "daily data purchase",
+          "description": "Recharge data daily",
+          "pointsReward": 1,
+          "startDate": "2025-08-05T23:00:00.000Z",
+          "endDate": "2025-10-14T23:00:00.000Z",
+          "createdAt": "2025-08-07T17:20:02.716Z",
+          "updatedAt": "2025-08-31T11:14:46.612Z",
+          "partner": {}
+        },
+        "progress": "in_progress",
+        "completedAt": "2025-08-09T15:01:27.921Z",
+        "createdAt": "2025-08-07T21:57:10.127Z",
+        "updatedAt": "2025-08-09T14:01:27.926Z"
+      }
+    ],
+    "count": 4,
+    "currentpage": 1,
+    "nextpage": null,
+    "prevpage": null,
+    "lastpage": 1
+  }
+}
+```
+
+</ResponseExample>

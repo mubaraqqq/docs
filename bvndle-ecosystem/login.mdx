@@ -1,0 +1,105 @@
+---
+title: "Login"
+description: "Call this endpoint to create a unique user tag linked to an enterprise partner. The tag acts as an identifier for the user within the UFEL system."
+---
+
+####
+
+import { URLBlock } from "/snippets/url-block.mdx";
+
+<URLBlock
+  url="https://test-api.bvndle.com/api/v1/ufel/users/login"
+  content={[
+    {
+      title: "Base URL",
+      caption: (
+        <span style={{ color: "#DC5695" }}>
+          https://test-api.bvndle.com/api/v1/ufel/
+        </span>
+      ),
+    },
+    { title: "HTTP Method", caption: "POST" },
+  ]}
+/>
+
+####
+
+import { Table } from "/snippets/custom-component.mdx";
+
+<Table
+  data={[
+    {
+      name: "epPartnerId",
+      type: "string",
+      desc: "Required The enterprise partner Id",
+    },
+    {
+      name: "epPartnerUserId",
+      type: "string",
+      desc: "Required The onboarded userId of the enterprise partner",
+    },
+    {
+      name: "tag",
+      type: "string",
+      desc: "Required A tag chosen by the enterprise partner user",
+    },
+    {
+      name: "password",
+      type: "string",
+      desc: "Required",
+    },
+  ]}
+/>
+
+```bash cURL
+curl --request POST ‘https://test-api.bvndle.com/api/v1/ufel/users/login’ \
+--header 'Content-Type: application/json'
+{
+  "tag": "sampletext",
+  "password": "Samplepassword",
+  "epPartnerId": "sample 32 no string",
+  "epPartnerUserId": "sample 32 no string"
+}'
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "login successful",
+  "data": {
+    "user": {
+      "fullname": "David Davids",
+      "email": "sampletest@mail.com",
+      "phone": "+23800000000"
+    },
+    "totalBvndleCoins": 0,
+    "totalPartnerCoins": 1000,
+    "redemptionHistory": {
+      "bvndle": [],
+      "partner": [
+        {
+          "type": "giftCard",
+          "totalDebit": "0",
+          "totalCredit": "3000"
+        }
+      ]
+    }
+  }
+}
+```
+
+```json Error 400
+{
+  "status": "failed",
+  "message": "invalid data provided",
+  "data": {
+    "errorType": "invalid",
+    "appErrorCode": "",
+    "error": "Email/Tag or Password Incorrect"
+  }
+}
+```
+
+</ResponseExample>
