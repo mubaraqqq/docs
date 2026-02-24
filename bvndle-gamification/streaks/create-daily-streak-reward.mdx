@@ -1,0 +1,120 @@
+---
+title: Create a Daily Streak Reward
+description: "This endpoint is used to create a streak"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/streaks/daily-reward",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "day",
+      type: "number",
+      desc: (
+        <>
+          Required <br />
+          The number of days for the challenge
+        </>
+      ),
+    },
+    {
+      name: "streakId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The ID of the streak
+        </>
+      ),
+    },
+    {
+      name: "rewardId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The ID of the reward
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/streaks/daily-reward' \
+--header 'Content-Type: application/json' \
+
+{
+    "day": 10,
+    "streakId": "998bd723-3d40-48d4-a896-b7eca283aafe",
+    "rewardId": "828218d6-9895-45c4-9e2e-e52d347bc1c0"
+}
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "daily reward created",
+  "data": {
+    "id": "3654d4fc-2b0f-4127-ae4c-ea422db86eb4",
+    "streak": {
+      "id": "1c865ca9-2df1-4d36-8f5b-fb5f33dc7f70",
+      "name": "first_time_login",
+      "partner": {},
+      "rewards": [],
+      "createdAt": "2025-09-15T21:09:52.746Z",
+      "updatedAt": "2025-09-15T22:12:07.735Z"
+    },
+    "day": 2,
+    "reward": {
+      "id": "14c7655e-db11-4741-9c16-a4d3300a2206",
+      "reward": 2,
+      "type": "coins",
+      "streak": {},
+      "createdAt": "2025-09-15T21:09:52.811Z",
+      "updatedAt": "2025-09-15T22:30:52.654Z"
+    },
+    "createdAt": "2025-09-15T23:01:05.807Z",
+    "updatedAt": "2025-09-15T23:01:05.807Z"
+  }
+}
+```
+
+</ResponseExample>

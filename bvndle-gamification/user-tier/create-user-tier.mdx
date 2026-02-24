@@ -1,0 +1,126 @@
+---
+title: Create User Tier
+description: "This endpoint creates a tier"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/user-tiers",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Name of the tier
+        </>
+      ),
+    },
+    {
+      name: "perks",
+      type: "array",
+      desc: (
+        <>
+          Required <br />
+          List of perks under the user tier
+        </>
+      ),
+    },
+    {
+      name: "missions",
+      type: "array",
+      desc: (
+        <>
+          Required <br />
+          List of mission IDs that must be fulfilled before progressing to the next
+          tier
+        </>
+      ),
+    },
+    {
+      name: "isFirst",
+      type: "boolean",
+      desc: (
+        <>
+          Optional <br />
+          Used to indicate if this is the first tier <br />
+          Default: false
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/user-tiers' \
+--header 'Content-Type: application/json' \
+
+{
+    "name": "professional",
+    "perks": [
+        "daily raffle",
+        "10mb daily",
+        "250mins on calls yearly"
+    ],
+    "missions": [
+        "80997148-fa86-428b-b632-3c8970945849",
+        "ec68ccdb-7fd4-477b-9c3d-d4d57a0e8a43"
+    ],
+    "isFirst": false
+}
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "user tier created",
+  "data": {
+    "id": "254a411c-7c3a-44ba-9cfd-67cbb47b3fb3",
+    "name": "novice",
+    "perks": ["daily raffle", "10mb daily", "250mins on calls"],
+    "partner": {},
+    "createdAt": "2025-08-05T07:11:45.363Z",
+    "updatedAt": "2025-08-05T07:11:45.363Z"
+  }
+}
+```
+
+</ResponseExample>

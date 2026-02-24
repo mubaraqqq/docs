@@ -1,0 +1,113 @@
+---
+title: Partner-User Coin Redemption
+description: "This endpoint enables partners to credit coins to users within the partner application"
+---
+
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+
+##
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption:
+        "https://test-api.bvndle.com/api/v1/laas/coins/transfer-to-user-wallet",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://testapi.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Req Body" />
+#####
+
+<Table
+  data={[
+    {
+      name: "userId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of the onboarded user
+        </>
+      ),
+    },
+    {
+      name: "coins",
+      type: "number",
+      desc: "Required",
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/coins/transfer-to-user-wallet' \
+--header 'Content-Type: application/json' \
+{
+    "userId": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+    "coins": 20
+}
+
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "coin transferred",
+  "data": {
+    "id": "a876c036-4343-4757-b979-f367593756ed",
+    "userId": "dcc1a639-906e-4393-84b7-689379fc4de8",
+    "debitOrCredit": "DE",
+    "coins": 80,
+    "claimed": true,
+    "transactionType": "user_partner_transfer",
+    "narration": "Transfer from partner to user",
+    "from": {
+      "id": "5a706241-5c41-4c8e-bc55-e7946e227864",
+      "fullname_businessName": "beebuu",
+      "email": "iheonu6@gmail.com",
+      "tag": null,
+      "userId": "dcc1a639-906e-4393-84b7-689379fc4de8"
+    },
+    "to": {
+      "id": "b8990a62-145b-487c-85e9-c59ccf08b0f5",
+      "fullname_businessName": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+      "email": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+      "tag": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+      "userId": "d3c0c232-6e07-40eb-a1ee-593483d689c9"
+    },
+    "plan": {},
+    "paidWithGiftCard": false,
+    "giftCardLedger": {},
+    "laas": false,
+    "charge": 0,
+    "refunded": false,
+    "createdAt": "2025-07-24T14:40:28.973Z",
+    "updatedAt": "2025-07-24T14:40:28.973Z"
+  }
+}
+```
+
+</ResponseExample>

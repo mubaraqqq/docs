@@ -1,0 +1,352 @@
+---
+title: Get Partner Special Campaigns
+description: "This endpoint is used to get special campaigns for a partner"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/special-campaigns",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameters" />
+<Table
+  data={[
+    {
+      name: "search",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "startDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "endDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "eventType",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          the type of the event
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/special-campaigns' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "special campaigns returned",
+  "data": {
+    "data": [
+      {
+        "id": "7bf6fbf0-94a1-4d13-94f8-bd5eb045309d",
+        "name": "New Special campaign",
+        "description": "Test special campaign",
+        "startDate": "2025-09-02T23:00:00.000Z",
+        "endDate": "2025-12-14T23:00:00.000Z",
+        "status": "active",
+        "events": [
+          {
+            "id": "b0a01dc3-9c1d-4d6e-ae2a-5743fa1e3497",
+            "spinWheel": {},
+            "mission": {
+              "id": "51eaebe9-9c70-4285-97b8-364166db6f9c",
+              "name": "1k yearly data purchase",
+              "description": "Recharge data daily",
+              "pointsReward": 1,
+              "startDate": "2025-09-05T23:00:00.000Z",
+              "endDate": "2025-12-14T23:00:00.000Z",
+              "createdAt": "2025-10-16T08:54:08.036Z",
+              "updatedAt": "2025-10-16T08:54:08.036Z",
+              "partner": {},
+              "requirements": [
+                "Finish your airtime",
+                "Recharge a new batch of airtime"
+              ],
+              "badge": {
+                "id": "34d48345-18ab-4ba0-b9b7-07a7bf767666",
+                "name": "shadow ninja",
+                "description": "Hello",
+                "partner": {},
+                "icon": null
+              }
+            },
+            "raffle": {},
+            "eventType": "mission",
+            "createdAt": "2025-10-16T08:54:08.047Z",
+            "updatedAt": "2025-10-16T08:54:08.047Z"
+          }
+        ],
+        "createdAt": "2025-10-16T08:54:07.997Z",
+        "updatedAt": "2025-10-16T08:54:07.997Z"
+      },
+      {
+        "id": "bec5e46c-7910-46c0-9726-c948087ced1e",
+        "name": "Special campaign 0",
+        "description": "Test special campaign",
+        "startDate": null,
+        "endDate": null,
+        "status": "active",
+        "events": [
+          {
+            "id": "51db30a4-f666-43ba-a91e-5023f20043ee",
+            "spinWheel": {},
+            "mission": {
+              "id": "85b9cbda-f55c-4d5b-a9d0-d876139564b8",
+              "name": "4k yearly data purchase",
+              "description": "Recharge data daily",
+              "pointsReward": 1,
+              "startDate": "2025-09-05T23:00:00.000Z",
+              "endDate": "2025-12-14T23:00:00.000Z",
+              "createdAt": "2025-10-15T16:35:55.061Z",
+              "updatedAt": "2025-10-15T16:35:55.061Z",
+              "partner": {},
+              "requirements": [
+                "Finish your airtime",
+                "Recharge a new batch of airtime"
+              ],
+              "badge": {
+                "id": "34d48345-18ab-4ba0-b9b7-07a7bf767666",
+                "name": "shadow ninja",
+                "description": "Hello",
+                "partner": {},
+                "icon": null
+              }
+            },
+            "raffle": {},
+            "eventType": "mission",
+            "createdAt": "2025-10-15T16:35:55.076Z",
+            "updatedAt": "2025-10-15T16:35:55.076Z"
+          }
+        ],
+        "createdAt": "2025-10-15T16:35:55.011Z",
+        "updatedAt": "2025-10-15T16:35:55.011Z"
+      },
+      {
+        "id": "6646a616-39b3-4d34-b61f-d2d677134ae8",
+        "name": "Special campaign!!",
+        "description": "Test special campaign",
+        "startDate": null,
+        "endDate": null,
+        "status": "active",
+        "events": [],
+        "createdAt": "2025-10-15T16:35:33.527Z",
+        "updatedAt": "2025-10-15T16:35:33.527Z"
+      },
+      {
+        "id": "bb775b18-82c2-4c1d-a178-422364530932",
+        "name": "Special campaign 7",
+        "description": "Test special campaign",
+        "startDate": null,
+        "endDate": null,
+        "status": "active",
+        "events": [],
+        "createdAt": "2025-10-15T16:33:17.465Z",
+        "updatedAt": "2025-10-15T16:33:17.465Z"
+      },
+      {
+        "id": "21bf2c16-c478-4c27-a1f4-cfc6564594a8",
+        "name": "Special campaign 6",
+        "description": "Test special campaign",
+        "startDate": null,
+        "endDate": null,
+        "status": "active",
+        "events": [],
+        "createdAt": "2025-10-15T16:33:13.336Z",
+        "updatedAt": "2025-10-15T16:33:13.336Z"
+      },
+      {
+        "id": "a9b2003a-42c9-407f-9d07-c25790e8554f",
+        "name": "Special campaign 5",
+        "description": "Test special campaign",
+        "startDate": null,
+        "endDate": null,
+        "status": "active",
+        "events": [],
+        "createdAt": "2025-10-15T16:31:21.315Z",
+        "updatedAt": "2025-10-15T16:31:21.315Z"
+      },
+      {
+        "id": "9703089a-96b0-406d-bf9e-b0ec5bf8e53e",
+        "name": "Special campaign 4",
+        "description": "Test special campaign",
+        "startDate": null,
+        "endDate": null,
+        "status": "active",
+        "events": [],
+        "createdAt": "2025-10-15T16:31:19.577Z",
+        "updatedAt": "2025-10-15T16:31:19.577Z"
+      },
+      {
+        "id": "a00bf1c9-6571-4ed7-860d-4fb12684acfb",
+        "name": "Special campaign 3",
+        "description": "Test special campaign",
+        "startDate": null,
+        "endDate": null,
+        "status": "active",
+        "events": [],
+        "createdAt": "2025-10-15T16:31:15.091Z",
+        "updatedAt": "2025-10-15T16:31:15.091Z"
+      },
+      {
+        "id": "3f3b12be-9f4a-4b28-bf66-d9537f90727c",
+        "name": "Special campaign 2",
+        "description": "Test special campaign",
+        "startDate": null,
+        "endDate": null,
+        "status": "active",
+        "events": [
+          {
+            "id": "92c3e743-2fde-4046-bd8d-7e17620ffdd9",
+            "spinWheel": {
+              "id": "4f763090-59d9-4bc1-907f-64c06448d713",
+              "name": "another spin wheel",
+              "prizes": [],
+              "isActive": true,
+              "entryFees": [
+                {
+                  "id": "5d622caf-e086-496e-b57a-cbd2085077ba",
+                  "fee": 5,
+                  "spinWheel": {},
+                  "type": "coins",
+                  "createdAt": "2025-10-15T16:16:16.778Z",
+                  "updatedAt": "2025-10-15T16:16:16.778Z"
+                },
+                {
+                  "id": "3dd21160-2978-45b0-bba1-97d73a3eb52f",
+                  "fee": 200,
+                  "spinWheel": {},
+                  "type": "airtime",
+                  "createdAt": "2025-10-15T16:16:16.778Z",
+                  "updatedAt": "2025-10-15T16:16:16.778Z"
+                }
+              ]
+            },
+            "mission": {},
+            "raffle": {},
+            "eventType": "spinWheel",
+            "createdAt": "2025-10-15T16:16:16.903Z",
+            "updatedAt": "2025-10-15T16:16:16.903Z"
+          },
+          {
+            "id": "dee58a75-4b8c-4dc2-bdc8-56cacd7b4402",
+            "spinWheel": {},
+            "mission": {},
+            "raffle": {
+              "id": "d4070a30-31c4-4fdd-86ca-dd1fc5672134",
+              "name": null,
+              "durationInDays": null,
+              "partner": {},
+              "prizes": [
+                {
+                  "id": "c51961fb-1441-4fbf-814b-5163b842e1ad",
+                  "raffle": {},
+                  "coin": 100,
+                  "timeline": "monthly"
+                },
+                {
+                  "id": "0100974e-20ba-4cd7-94fa-7388e4eb026e",
+                  "raffle": {},
+                  "coin": 10,
+                  "timeline": "daily"
+                },
+                {
+                  "id": "14330877-ba62-4e9f-855c-3658c941baa3",
+                  "raffle": {},
+                  "coin": 50,
+                  "timeline": "weekly"
+                }
+              ],
+              "prize": 1,
+              "coinAmount": 1,
+              "isActive": true,
+              "startDate": "2025-09-02T23:00:00.000Z",
+              "isPaused": false
+            },
+            "eventType": "raffle",
+            "createdAt": "2025-10-15T16:16:16.903Z",
+            "updatedAt": "2025-10-15T16:16:16.903Z"
+          }
+        ],
+        "createdAt": "2025-10-15T16:16:16.456Z",
+        "updatedAt": "2025-10-15T16:16:16.456Z"
+      },
+      {
+        "id": "0aacf914-4a44-4f3a-ae9e-8e26db407213",
+        "name": "Special campaign",
+        "description": "Test special campaign",
+        "startDate": null,
+        "endDate": null,
+        "status": "active",
+        "events": [],
+        "createdAt": "2025-10-15T14:55:55.060Z",
+        "updatedAt": "2025-10-15T14:55:55.060Z"
+      }
+    ],
+    "count": 11,
+    "currentpage": 1,
+    "nextpage": 2,
+    "prevpage": null,
+    "lastpage": 2
+  }
+}
+```
+
+</ResponseExample>

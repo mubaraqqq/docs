@@ -1,0 +1,158 @@
+---
+title: Create Spin Wheel
+description: "This endpoint is used to create a spin wheel"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/spin-wheel",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Name of the spin wheel
+        </>
+      ),
+    },
+    {
+      name: "maxSpins",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The maximum number of tumes the user is allowed to spin the wheel <br />
+          <strong>NOTE:</strong> Set to -1 for unlimited
+        </>
+      ),
+    },
+    {
+      name: "entryFees",
+      type: "array",
+      desc: <>Required</>,
+    },
+    {
+      name: "entryFees.type",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The mode of payment
+        </>
+      ),
+    },
+    {
+      name: "entryFees.fees",
+      type: "number",
+      desc: (
+        <>
+          Required <br />
+          The amount to be debited from the user
+        </>
+      ),
+    },
+    {
+      name: "transactionPin",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The transaction PIN that was created by the partner
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/spin-wheel' \
+--header 'Content-Type: application/json' \
+
+{
+    "transactionPin": "1234",
+    "maxSpins": -1,
+    "name": "Another spin wheel",
+    "entryFees": [
+        {
+            "fee": 5,
+            "type": "coins"
+        },
+        {
+            "fee": 200,
+            "type": "airtime"
+        }
+    ]
+}
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "spin wheel created successfully",
+  "data": {
+    "id": "8269566e-d296-47f5-8998-4934083cdbda",
+    "name": "another spin wheel",
+    "prizes": [],
+    "isActive": true,
+    "entryFees": [
+      {
+        "id": "413b3fd5-2906-44a2-a005-1297ee7cb156",
+        "fee": 5,
+        "spinWheel": {},
+        "type": "coins",
+        "createdAt": "2025-09-02T07:14:56.620Z",
+        "updatedAt": "2025-09-02T07:14:56.620Z"
+      },
+      {
+        "id": "ac4d5236-c26f-4524-883a-c31cc98549ad",
+        "fee": 200,
+        "spinWheel": {},
+        "type": "airtime",
+        "createdAt": "2025-09-02T07:14:56.662Z",
+        "updatedAt": "2025-09-02T07:14:56.662Z"
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,49 @@
+---
+title: User onboarding - Remove a single user
+description: "Call this endpoint to remove a single onboarded user"
+---
+
+import { URLBlock } from "/snippets/url-block.mdx";
+
+##
+
+<URLBlock
+  url="https://test-api.bvndle.com/api/v1/laas/onboard-users/:userId"
+  content={[
+    { title: "HTTP Method", caption: "DELETE" },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+```bash cURL
+curl --request DELETE
+'https://test-api.bvndle.com/api/v1/laas/onboard-users/:userId' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer ACCESS_TOKEN'\
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "user deleted successfully"
+}
+```
+
+```json Error 400
+{
+  "status": "failed",
+  "message": "data not found",
+  "data": {
+    "errorType": "not found",
+    "appErrorCode": "",
+    "error": "User Not Found"
+  }
+}
+```
+
+</ResponseExample>

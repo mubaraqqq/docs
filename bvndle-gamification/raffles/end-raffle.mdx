@@ -1,0 +1,66 @@
+---
+title: End Raffle
+description: "This endpoint ends a currently active raffle"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/raffles/:raffleId/end",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "PATCH",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request PATCH
+'https://test-api.bvndle.com/api/v1/laas/raffles/ac8cfcba-66c1-40ed-8e40-616cab0f25cb/end' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "raffle ended successfully",
+  "data": {
+    "id": "44d6fac7-01cc-4020-a02f-0e731062b1a8",
+    "name": null,
+    "durationInDays": null,
+    "partner": {},
+    "prizes": [],
+    "prize": 1,
+    "coinAmount": 1,
+    "isActive": false,
+    "startDate": "2025-09-02T23:00:00.000Z",
+    "isPaused": false
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,181 @@
+---
+title: Get Leaderboard
+description: "This endpoint returns the coins leaderboard"
+---
+
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+
+##
+
+<NoteStatement
+  label="Note"
+  message="The leaderboard updates every 30 minutes"
+/>
+
+##
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption:
+        "https://test-api.bvndle.com/api/v1/coins/partner/ep-leaderboard",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://testapi.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+#####
+
+<Table
+  data={[
+    {
+      name: "userId",
+      type: "string",
+      desc: "Required",
+    },
+    {
+      name: "type",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          <strong>Value:</strong> spender or earner
+        </>
+      ),
+    },
+    {
+      name: "page",
+      type: "number",
+      desc: "Optional",
+    },
+    {
+      name: "limit",
+      type: "number",
+      desc: "Optional",
+    },
+    {
+      name: "month",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          <strong>Value:</strong> 1 (January) - 12 (December) <br />
+          <strong>Default:</strong> Current month index
+        </>
+      ),
+    },
+    {
+      name: "year",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          <strong>Default:</strong> Current year
+        </>
+      ),
+    },
+    {
+      name: "period",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          <strong>Value:</strong> monthly or yearly <br />
+          <strong>Default:</strong> monthly
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/coins/partner/ep-leaderboard?page=1&limit=10&month=3&year=2025&type=earner' \
+--header 'Content-Type: application/json' \
+
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "leaderboard returned",
+  "data": {
+    "userPosition": {
+      "userId": "0911a28a-d2a1-4eff-a8cc-2a9ab393bde6",
+      "amount": "0",
+      "position": 18
+    },
+    "data": [
+      {
+        "userId": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "coins": "750"
+      },
+      {
+        "userId": "4d7b55c0-716e-4db1-8c01-91f5922747c1",
+        "coins": "400"
+      },
+      {
+        "userId": "4d7b55c0-716e-4db1-8c01-91f5922747c5",
+        "coins": "250"
+      },
+      {
+        "userId": "ceede6ba-bc5b-460b-a056-b28e5bce803b",
+        "coins": "50"
+      },
+      {
+        "userId": "be90f9fd-4650-4b68-8dbc-212245570a95",
+        "coins": "0"
+      },
+      {
+        "userId": "9011a28a-d2a1-4eff-a8cc-2a9ab393bde3",
+        "coins": "0"
+      },
+      {
+        "userId": "0911a28a-d2a1-4eff-a8cc-2a9ab393bde3",
+        "coins": "0"
+      },
+      {
+        "userId": "02731314-e354-418a-8c7f-6f4b3a0ead6c",
+        "coins": "0"
+      },
+      {
+        "userId": "9b492a91-46a5-421a-bc1b-a85237dac647",
+        "coins": "0"
+      },
+      {
+        "userId": "03fae669-8e18-4d5b-b5e5-c601f182113b",
+        "coins": "0"
+      }
+    ],
+    "count": "18",
+    "currentpage": 1,
+    "nextpage": 2,
+    "prevpage": null,
+    "lastpage": 2
+  }
+}
+```
+
+</ResponseExample>

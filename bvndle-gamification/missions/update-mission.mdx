@@ -1,0 +1,130 @@
+---
+title: Update Mission
+description: "This endpoint is used to update mission details"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/missions/:id",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "PUT",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Name of the mission
+        </>
+      ),
+    },
+    {
+      name: "description",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Short description of the mission
+        </>
+      ),
+    },
+    {
+      name: "pointsReward",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          Points to be awarded on completion of the mission
+        </>
+      ),
+    },
+    {
+      name: "startDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+          When the mission is expected to start
+        </>
+      ),
+    },
+    {
+      name: "endDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+          When the mission is expected to end
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request PUT
+'https://test-api.bvndle.com/api/v1/laas/missions/07d205a5-fde5-4fc6-a886-4f0a7d647e96' \
+--header 'Content-Type: application/json' \
+
+{
+    "name": "Monthly data purchase",
+    "description": "Recharge data monthly",
+    "pointsReward": 2,
+    "startDate": "2025-08-07",
+    "endDate": "2025-10-15"
+}
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "mission updated",
+  "data": {
+    "id": "6292cad2-fcd2-4b58-92ca-850ca7c64ac9",
+    "name": "monthly data purchase",
+    "description": "Recharge data monthly",
+    "pointsReward": 2,
+    "startDate": "2025-08-05T23:00:00.000Z",
+    "endDate": "2025-08-14T23:00:00.000Z",
+    "createdAt": "2025-08-06T22:43:31.045Z",
+    "updatedAt": "2025-08-06T22:44:20.693Z",
+    "partner": {}
+  }
+}
+```
+
+</ResponseExample>

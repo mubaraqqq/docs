@@ -1,0 +1,161 @@
+---
+title: Create Streak
+description: "This endpoint is used to create a streak"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/streaks",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Name of the mission
+        </>
+      ),
+    },
+    {
+      name: "rewards",
+      type: "array",
+      desc: (
+        <>
+          Required <br />
+        </>
+      ),
+    },
+    {
+      name: "rewards.ticketId",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          The ID of the tickets
+        </>
+      ),
+    },
+    {
+      name: "rewards.amount",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          When the type is not "ticket"
+        </>
+      ),
+    },
+    {
+      name: "rewards.type",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The type of the reward. Ex. coins, ticket, airtime
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/streaks' \
+--header 'Content-Type: application/json' \
+
+{
+    "name": "daily_transaction_streak",
+    "rewards": [
+        {
+            "ticketId": "36a2ed79-42fd-4ea7-b558-a4869adf726f",
+            "type": "ticket"
+        },
+        {
+            "amount": 2000,
+            "type": "airtime"
+        }
+    ]
+}
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "streak created",
+  "data": {
+    "id": "23f43b93-0bd9-471f-9177-17e85d053675",
+    "name": "daily_transaction_streak",
+    "partner": {},
+    "rewards": [
+      {
+        "id": "33899fae-5f51-4bcf-afa5-43845551f8d8",
+        "reward": null,
+        "type": "ticket",
+        "ticket": {
+          "id": "36a2ed79-42fd-4ea7-b558-a4869adf726f",
+          "partner": {},
+          "status": "active",
+          "code": "6138411414",
+          "expiryDate": "2025-10-19T23:00:00.000Z",
+          "createdAt": "2025-10-04T19:15:11.321Z",
+          "updatedAt": "2025-10-04T19:15:11.321Z"
+        },
+        "streak": {},
+        "createdAt": "2025-10-06T16:56:14.891Z",
+        "updatedAt": "2025-10-06T16:56:14.891Z"
+      },
+      {
+        "id": "47ccd00d-ae39-4c49-9c4f-153dcead8d79",
+        "reward": 2000,
+        "type": "airtime",
+        "ticket": {},
+        "streak": {},
+        "createdAt": "2025-10-06T16:56:14.915Z",
+        "updatedAt": "2025-10-06T16:56:14.915Z"
+      }
+    ],
+    "dailyRewards": [],
+    "createdAt": "2025-10-06T16:56:14.852Z",
+    "updatedAt": "2025-10-06T16:56:14.852Z"
+  }
+}
+```
+
+</ResponseExample>

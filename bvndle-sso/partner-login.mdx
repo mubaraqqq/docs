@@ -1,0 +1,109 @@
+---
+title: Partner Login
+description: "Call this endpoint to login as a partner"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel/partners/login",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel/",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+  ]}
+/>
+
+###
+
+<Table
+  data={[
+    {
+      name: "email",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The email address that the partner onboarded with
+        </>
+      ),
+    },
+    {
+      name: "password",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The password that the partner onboarded with
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/ufel/partners/login' \
+--header 'Content-Type: application/json' \
+
+{
+    "email": "example.testpartner4@gmail.com",
+    "password": "testPartner@1"
+
+}
+
+```
+
+###
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "Login successful",
+  "data": {
+    "tokens": {
+      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRkODMyYjE5LThmZmUtNGIyNy05YmMwLTRkOTc5NGE4Njg5MyIsImlhdCI6MTc0NjUyNDExMiwiZXhwIjoxNzQ5MTE2MTEyfQ.taeepg8fudLLipmrBMwUfKqGHEJCKwX9kVzBzDySEhQ",
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRkODMyYjE5LThmZmUtNGIyNy05YmMwLTRkOTc5NGE4Njg5MyIsImlhdCI6MTc0NjUyNDExMiwiZXhwIjoxNzQ2NjQ0MTEyfQ.7ZBETP7lRAWa1g0PDcq9a4cO0tZsoAbUQTaZlAkbXFo"
+    },
+    "user": {
+      "id": "dd832b19-8ffe-4b27-9bc0-4d9794a86893",
+      "email": "example.testpartner4@gmail.com",
+      "name": "test partner",
+      "userUrl": "http://example.anchoria.com/api/v1/users/nesta",
+      "createdAt": "2025-05-06T09:32:58.141Z",
+      "clientId": "f11722107d8425b1e7dd87aeb17e36da7c593ab98114345544cd52267829cae964428fcf61c1072e8c46cd391b4df3bacf6687737d79a79d457cab4bc7231664"
+    }
+  }
+}
+```
+
+```json Error 400
+{
+  "status": "failed",
+  "message": "invalid data provided",
+  "data": {
+    "errorType": "invalid",
+    "appErrorCode": "Bad request",
+    "error": "\"email\" must be a valid email"
+  }
+}
+```
+
+</ResponseExample>

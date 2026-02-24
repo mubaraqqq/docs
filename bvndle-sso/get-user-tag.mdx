@@ -1,0 +1,85 @@
+---
+title: Get User Tag
+description: "Call this endpoint to get a user tag"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel/users/get-tag",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+#####
+
+<Table
+  data={[
+    {
+      name: "userId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The user's ID
+        </>
+      ),
+    },
+    {
+      name: "ssoPartnerId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The ID returned when you login
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/ufel/users/get-tag?userId=4d7b55c0-716e-4db1-8c01-91f5922747c0&ssoPartnerId=6e5a0874-09a2-496a-9196-5a9d76230e9f' \
+--header 'Content-Type: application/json' \
+
+```
+
+###
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "user tag returned",
+  "data": "iheonu_1"
+}
+```
+
+</ResponseExample>

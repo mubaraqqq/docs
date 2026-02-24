@@ -1,0 +1,80 @@
+---
+title: "Get a Rule"
+description: "Get a Rule with rule name with this endpoint."
+---
+
+####
+
+import { URLBlock } from "/snippets/url-block.mdx";
+
+<URLBlock
+  url="https://test-api.bvndle.com/api/v1/laas/rules/get-rule-by-name"
+  content={[
+    { title: "HTTP Method", caption: "GET" },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+####
+
+import { Table } from "/snippets/custom-component.mdx";
+
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: "Required - Rule Name",
+    },
+  ]}
+/>
+
+```bash cURL
+curl --request GET 'https://test-api.bvndle.com/api/v1/laas/rules/create-rule' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer ACCESS_TOKEN' \
+--data-raw '{
+  "name": "Transaction Drive",
+  "coinValue": "10",
+  "maxNumberOfParticipant": "20000",
+  "condition": "User makes 5 transactions"
+}
+{
+  "userId": "f0c8c81d-13d3-4515-b40f-711ef91de094",
+  "ruleName": "transaction drive"
+}'
+```
+
+```bash URL
+https://test-api.bvndle.com/api/v1/laas/rules/get-rule-by-name?name=transaction
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "request successful",
+  "data": {
+    "id": "83ca0a27-9c42-4d3c-8455-ddb185082ed8",
+    "name": "transaction drive",
+    "coinValue": "10",
+    "condition": "user makes 5 transactions",
+    "maxNumberOfParticipant": "2",
+    "status": "active"
+  }
+}
+```
+
+```json Error 400
+{
+  "status": "success",
+  "message": "request successful",
+  "data": null
+}
+```
+
+</ResponseExample>

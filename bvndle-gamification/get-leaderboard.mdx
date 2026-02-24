@@ -1,0 +1,147 @@
+---
+title: Get Leaderboard
+description: "This endpoint returns the details of a mission"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/leaderboard/new",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+<Table
+  data={[
+    {
+      name: "partnerId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of the partner
+        </>
+      ),
+    },
+    {
+      name: "page",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "take",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "startDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "endDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "userId",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          ID of the onboarded user <br />
+          PS: Add userId if you want the position of the user with the ID to be
+          returned
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/leaderboard/new?page=1&take=20&partnerId=0463c990-3b8b-4cb4-b0bc-b08aa0d88d93&userId=02731314-e354-418a-8c7f-6f4b3a1ead6d' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "leaderboard returned",
+  "data": {
+    "userPosition": {
+      "userId": "02731314-e354-418a-8c7f-6f4b3a1ead6d",
+      "amount": 2,
+      "position": 1
+    },
+    "data": [
+      {
+        "id": "53f96a11-5cc4-4948-985b-a2f88d04a214",
+        "points": 2,
+        "createdAt": "2025-08-11T17:41:26.487Z",
+        "updatedAt": "2025-08-13T22:30:38.936Z",
+        "user": {
+          "id": "4d86fdff-f3f6-4792-8c81-ef44feac1ba7",
+          "userId": "02731314-e354-418a-8c7f-6f4b3a1ead6d",
+          "userData": null,
+          "createdAt": "2025-03-25T21:11:38.149Z",
+          "updatedAt": "2025-08-13T23:24:56.492Z"
+        }
+      }
+    ],
+    "count": 1,
+    "currentpage": 1,
+    "nextpage": null,
+    "prevpage": null,
+    "lastpage": 1
+  }
+}
+```
+
+</ResponseExample>

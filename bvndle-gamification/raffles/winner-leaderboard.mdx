@@ -1,0 +1,240 @@
+---
+title: Winner Leaderboard
+description: "This endpoint returns the winner leaderboard for a particular raffle"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/raffles/leaderboard",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+<Table
+  data={[
+    {
+      name: "partnerId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of the partner
+        </>
+      ),
+    },
+    {
+      name: "userId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of the user
+        </>
+      ),
+    },
+    {
+      name: "type",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Values: daily, weekly, monthly
+        </>
+      ),
+    },
+    {
+      name: "page",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "take",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "sortDirection",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Values: desc, asc <br />
+          Default: desc
+        </>
+      ),
+    },
+    {
+      name: "startDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "endDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "status",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Values: paid, unpaid
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/raffles/leaderboard?partnerId=dcc1a639-906e-4393-84b7-689379fc4de8&userId=4d7b55c0-716e-4db1-8c01-91f5922747c1&type=daily&sortDirection=desc&status=paid&page=1&take=10' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "winner leaderboard",
+  "data": {
+    "userPosition": {
+      "userId": "4d7b55c0-716e-4db1-8c01-91f5922747c1",
+      "amount": 10,
+      "position": 4
+    },
+    "data": [
+      {
+        "userId": "ceede6ba-bc5b-460b-a056-b28e5bce803b",
+        "prize": 5,
+        "createdAt": "2025-09-02T11:43:47.479Z",
+        "rewardType": "daily",
+        "entryFee": 20,
+        "entryFeeType": "coin",
+        "status": "paid",
+        "tier": "amateur",
+        "period": "2nd September"
+      },
+      {
+        "userId": "be90f9fd-4650-4b68-8dbc-212245570a95",
+        "prize": 5,
+        "createdAt": "2025-09-02T11:43:39.649Z",
+        "rewardType": "daily",
+        "entryFee": 20,
+        "entryFeeType": "coin",
+        "status": "paid",
+        "tier": "amateur",
+        "period": "2nd September"
+      },
+      {
+        "userId": "4d7b55c0-716e-4db1-8c01-91f5922747c5",
+        "prize": 10,
+        "createdAt": "2025-09-02T11:31:47.043Z",
+        "rewardType": "daily",
+        "entryFee": 20,
+        "entryFeeType": "coin",
+        "status": "paid",
+        "tier": "amateur",
+        "period": "2nd September"
+      },
+      {
+        "userId": "4d7b55c0-716e-4db1-8c01-91f5922747c1",
+        "prize": 10,
+        "createdAt": "2025-09-02T11:31:37.687Z",
+        "rewardType": "daily",
+        "entryFee": 20,
+        "entryFeeType": "coin",
+        "status": "paid",
+        "tier": "amateur",
+        "period": "2nd September"
+      },
+      {
+        "userId": "4d7b55c0-716e-4db1-8c01-91f5922747d1",
+        "prize": 10,
+        "createdAt": "2025-09-02T11:30:51.070Z",
+        "rewardType": "daily",
+        "entryFee": 20,
+        "entryFeeType": "coin",
+        "status": "paid",
+        "tier": "amateur",
+        "period": "2nd September"
+      },
+      {
+        "userId": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "prize": 10,
+        "createdAt": "2025-09-02T10:42:51.592Z",
+        "rewardType": "daily",
+        "entryFee": 20,
+        "entryFeeType": "coin",
+        "status": "paid",
+        "tier": "amateur",
+        "period": "2nd September"
+      },
+      {
+        "userId": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "prize": 20,
+        "createdAt": "2025-09-02T10:13:43.804Z",
+        "rewardType": "daily",
+        "entryFee": 20,
+        "entryFeeType": "coin",
+        "status": "paid",
+        "tier": "amateur",
+        "period": "2nd September"
+      }
+    ],
+    "count": 7,
+    "currentpage": 1,
+    "nextpage": null,
+    "prevpage": null,
+    "lastpage": 1
+  }
+}
+```
+
+</ResponseExample>

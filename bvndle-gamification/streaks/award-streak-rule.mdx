@@ -1,0 +1,109 @@
+---
+title: Award Streak Rule
+description: "This endpoint is used to update a streak reward"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/streaks/award-rule",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Name of the mission
+        </>
+      ),
+    },
+    {
+      name: "userId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          the ID of the user
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/streaks/award-rule' \
+--header 'Content-Type: application/json' \
+
+{
+    "name": "login_streak",
+    "userId": "02731314-e354-418a-7c7f-6f4b3b1eed80"
+}
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "streak rule awarded",
+  "data": {
+    "id": "6fd1034c-8281-4d35-9199-eeb8203733bc",
+    "streak": {
+      "id": "dcae2098-5f8f-4bb4-8ec4-a03da8409808",
+      "name": "login_streak",
+      "partner": {},
+      "rewards": [],
+      "createdAt": "2025-09-15T23:42:32.301Z",
+      "updatedAt": "2025-09-15T23:42:32.301Z"
+    },
+    "user": {
+      "id": "3379f6f1-e5be-4a84-9a47-7c91426abd83",
+      "userId": "02731314-e354-418a-7c7f-6f4b3b1eed80",
+      "partner": {},
+      "userData": null,
+      "createdAt": "2025-09-11T13:46:08.749Z",
+      "updatedAt": "2025-09-11T13:46:08.749Z",
+      "tier": {}
+    },
+    "createdAt": "2025-09-16T20:05:02.047Z",
+    "updatedAt": "2025-09-16T20:05:02.047Z"
+  }
+}
+```
+
+</ResponseExample>

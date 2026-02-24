@@ -1,0 +1,118 @@
+---
+title: Update Ticket
+description: "This endpoint is used to creaupdatete a ticket"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/tickets/:id",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "PUT",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Name of the ticket
+        </>
+      ),
+    },
+    {
+      name: "description",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          The description of the ticket
+        </>
+      ),
+    },
+    {
+      name: "code",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          Ticket code
+        </>
+      ),
+    },
+    {
+      name: "expiryDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+          This is the expiry date of the ticket
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request PUT
+'https://test-api.bvndle.com/api/v1/laas/tickets/34d48345-18ab-4ba0-b9b7-07a7bf767666' \
+
+{
+    // "expiryDate": "2025-10-20"
+    // "status": "inactive"
+    "name": "Test ticket",
+    "description": "Test!!!"
+}
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "ticket updated",
+  "data": {
+    "id": "c84470af-a9b8-49f7-a4f3-e46d9d814edf",
+    "partner": {},
+    "name": "Test ticket",
+    "description": "Test!!!",
+    "status": "inactive",
+    "code": "4949438674",
+    "expiryDate": "2025-10-19T23:00:00.000Z",
+    "createdAt": "2025-10-04T14:49:59.311Z",
+    "updatedAt": "2025-10-08T19:21:57.002Z"
+  }
+}
+```
+
+</ResponseExample>

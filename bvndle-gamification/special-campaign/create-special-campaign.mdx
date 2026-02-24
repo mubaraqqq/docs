@@ -1,0 +1,482 @@
+---
+title: Create Special Campaign
+description: "This endpoint is used to create a special campaign"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/special-campaigns",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "name",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Name of the campaign
+        </>
+      ),
+    },
+    {
+      name: "description",
+      type: "string",
+      desc: (
+        <>
+          Required <br />A short description of the camapaign
+        </>
+      ),
+    },
+    {
+      name: "startDate",
+      type: "date",
+      desc: (
+        <>
+          Required <br />
+          Start date for the campaign
+        </>
+      ),
+    },
+    {
+      name: "endDate",
+      type: "date",
+      desc: (
+        <>
+          Required <br />
+          The end date for the campaign
+        </>
+      ),
+    },
+
+    {
+      name: "events",
+      type: "array",
+      desc: (
+        <>
+          Required <br />
+        </>
+      ),
+    },
+
+    {
+      name: "eventType",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          This is the event type <br />
+          • mission <br />
+          • raffle <br />
+          • spin the wheel <br />
+        </>
+      ),
+    },
+    {
+      name: "mission.name",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          This is the mission name <br />
+          Only required when eventType is mission
+        </>
+      ),
+    },
+    {
+      name: "mission.description",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          This is the mission description <br />
+          Only required when eventType is mission
+        </>
+      ),
+    },
+    {
+      name: "mission.pointsReward",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          This is the number of points gotten for completing missions <br />
+          Only required when eventType is mission
+        </>
+      ),
+    },
+    {
+      name: "mission.startDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+          This is the start date of the mission <br />
+          Only required when eventType is mission
+        </>
+      ),
+    },
+    {
+      name: "mission.endDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+          The end date for the mission <br />
+          Only required when eventType is mission
+        </>
+      ),
+    },
+    {
+      name: "mission.badgeId",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+          This is the user's badgeId <br />
+          Only required when eventType is mission
+        </>
+      ),
+    },
+    {
+      name: "mission.requirements",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          These are the requirements for the mission to be passed <br />
+          Only required when eventType is mission
+        </>
+      ),
+    },
+    {
+      name: "eventType.raffle",
+      type: "array",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "raffle.startDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+          The start date for the raffle <br />
+          Only required when eventType is raffle
+        </>
+      ),
+    },
+    {
+      name: "raffle.endDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+          The end date for the raffle <br />
+          Only required when eventType is raffle
+        </>
+      ),
+    },
+    {
+      name: "raffle.prizes",
+      type: "array",
+      desc: (
+        <>
+          Optional <br />
+          This is the prize for the raffle <br />
+          Only required when eventType is raffle
+        </>
+      ),
+    },
+    {
+      name: "prizes.coin",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          This is the number of coins for each raffle win <br />
+          Only required when eventType is raffle
+        </>
+      ),
+    },
+    {
+      name: "prizes.timeline",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          This is the timeline for the raffle <br />
+          • daily <br />
+          • weekly <br />
+          • monthly <br />
+          Only required when eventType is raffle
+        </>
+      ),
+    },
+    {
+      name: "raffle.entryFees",
+      type: "array",
+      desc: (
+        <>
+          Optional <br />
+          This is the fee to enter into the raffle <br />
+          Only required when eventType is raffle
+        </>
+      ),
+    },
+    {
+      name: "entryFees.type",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          This is the type of the entry fee - either coin or airtime <br />
+          Only required when eventType is raffle
+        </>
+      ),
+    },
+    {
+      name: "entryFees.fee",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          This is the amount needed to enter <br />
+          Only required when eventType is raffle
+        </>
+      ),
+    },
+    {
+      name: "eventType.spinWheel",
+      type: "array",
+      desc: (
+        <>
+          Optional <br />
+          Only required when eventType is spinWheel
+        </>
+      ),
+    },
+    {
+      name: "spinWheel.maxSpin",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          The max number of spins per user <br />
+          Only required when eventType is spinWheel
+        </>
+      ),
+    },
+    {
+      name: "spinWheel.name",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          The name of the spinWheel game <br />
+          Only required when eventType is spinWheel
+        </>
+      ),
+    },
+    {
+      name: "spinWheel.entryFees",
+      type: "array",
+      desc: (
+        <>
+          Optional <br />
+          The max number of spins per user <br />
+          Only required when eventType is spinWheel
+        </>
+      ),
+    },
+    {
+      name: "entryFees.type",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          This is the type of the entry fee - either coin or airtime <br />
+          Only required when eventType is spinWheel
+        </>
+      ),
+    },
+    {
+      name: "entryFees.fee",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          This is the amount needed to enter <br />
+          Only required when eventType is spinWheel
+        </>
+      ),
+    },
+
+]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/special-campaigns' \
+
+
+--data '{
+    "name": "New Special campaign",
+    "description": "Test special campaign",
+    "startDate": "2025-09-03",
+    "endDate": "2025-12-15",
+    "events": [
+        {
+            "eventType": "mission",
+            "mission": {
+                "name": "1K Yearly data purchase",
+                "description": "Recharge data daily",
+                "pointsReward": 1,
+                "startDate": "2025-09-06",
+                "endDate": "2025-12-15",
+                "transactionPin": "1234",
+                "badgeId": "34d48345-18ab-4ba0-b9b7-07a7bf767666",
+                "requirements": [
+                    "Finish your airtime",
+                    "Recharge a new batch of airtime"
+                ]
+            }
+        }
+        // {
+        //     "eventType": "raffle",
+        //     "raffle": {
+        //         "startDate": "2025-09-03",
+        //         "endDate": "2025-09-10",
+        //         "prizes": [
+        //             {
+        //                 "coin": 10,
+        //                 "timeline": "daily"
+        //             },
+        //             {
+        //                 "coin": 50,
+        //                 "timeline": "weekly"
+        //             },
+        //             {
+        //                 "coin": 100,
+        //                 "timeline": "monthly"
+        //             }
+        //         ],
+        //         "entryFees": [
+        //             {
+        //                 "type": "coin",
+        //                 "fee": 2
+        //             },
+        //             {
+        //                 "type": "airtime",
+        //                 "fee": 10
+        //             }
+        //         ]
+        //     }
+        // },
+        // {
+        //     "eventType": "spinWheel",
+        //     "spinWheel": {
+        //         "maxSpins": -1,
+        //         "name": "Another spin wheel",
+        //         "entryFees": [
+        //             {
+        //                 "fee": 5,
+        //                 "type": "coins"
+        //             },
+        //             {
+        //                 "fee": 200,
+        //                 "type": "airtime"
+        //             }
+        //         ]
+        //     }
+        // }
+    ]
+}'
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "special campaign created successfully",
+  "data": {
+    "id": "7bf6fbf0-94a1-4d13-94f8-bd5eb045309d",
+    "name": "New Special campaign",
+    "description": "Test special campaign",
+    "startDate": "2025-09-03",
+    "endDate": "2025-12-15",
+    "status": "active",
+    "events": [
+      {
+        "id": "b0a01dc3-9c1d-4d6e-ae2a-5743fa1e3497",
+        "spinWheel": {},
+        "mission": {
+          "id": "51eaebe9-9c70-4285-97b8-364166db6f9c",
+          "name": "1k yearly data purchase",
+          "description": "Recharge data daily",
+          "pointsReward": 1,
+          "startDate": "2025-09-06",
+          "endDate": "2025-12-15",
+          "createdAt": "2025-10-16T08:54:08.036Z",
+          "updatedAt": "2025-10-16T08:54:08.036Z",
+          "partner": {},
+          "requirements": [
+            "Finish your airtime",
+            "Recharge a new batch of airtime"
+          ],
+          "badge": {
+            "id": "34d48345-18ab-4ba0-b9b7-07a7bf767666",
+            "name": "shadow ninja",
+            "description": "Hello",
+            "partner": {},
+            "icon": null
+          }
+        },
+        "raffle": {},
+        "eventType": "mission",
+        "createdAt": "2025-10-16T08:54:08.047Z",
+        "updatedAt": "2025-10-16T08:54:08.047Z"
+      }
+    ],
+    "createdAt": "2025-10-16T08:54:07.997Z",
+    "updatedAt": "2025-10-16T08:54:07.997Z"
+  }
+}
+```
+
+</ResponseExample>

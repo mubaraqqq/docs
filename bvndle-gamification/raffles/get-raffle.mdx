@@ -1,0 +1,101 @@
+---
+title: Get Raffle
+description: "This endpoint returns the details of a raffle"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.mdx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/raffles/:id",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/raffles/6292cad2-fcd2-4b58-92ca-850ca7c64ac9?partnerId=dcc1a639-906e-4393-84b7-689379fc4de8' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "raffle returned",
+  "data": {
+    "id": "2d65edee-732a-4048-ba76-50a06b299fef",
+    "name": "longest lasting streak",
+    "durationInDays": 5,
+    "partner": {
+      "id": "dcc1a639-906e-4393-84b7-689379fc4de8",
+      "businessName": "Edited Business Name",
+      "brandName": "bb",
+      "businessType": {},
+      "businessAddress": "Edited Business Address",
+      "registrationNumber": null,
+      "email": "iheonu6@gmail.com",
+      "tag": null,
+      "emailVerified": null,
+      "emailCodeExpiresAt": null,
+      "emailVerifiedAt": null,
+      "referralCode": "be00659",
+      "referred": null,
+      "otpExpiresAt": null,
+      "transactionPinCreated": true,
+      "type": "partner",
+      "status": "active",
+      "image": null,
+      "coverImage": null,
+      "bvn": null,
+      "incorporationDate": null,
+      "dateJoined": "2025-02-11T11:13:45.810Z",
+      "phone": "00000000000",
+      "countryCode": null,
+      "bankAccountCreated": false,
+      "bvnValidated": false,
+      "isDisabled": false,
+      "priority": 3,
+      "completedTour": false,
+      "webhookURL": "http://editedwebhookaddress.com",
+      "webhookAuthorizationToken": "Authozation Code",
+      "shop": {},
+      "addMultipleEmails": true,
+      "partnerEmails": []
+    },
+    "prizes": [],
+    "prize": 1,
+    "coinAmount": 1,
+    "isActive": false,
+    "startDate": "2025-04-06T11:49:55.188Z",
+    "isPaused": false
+  }
+}
+```
+
+</ResponseExample>
