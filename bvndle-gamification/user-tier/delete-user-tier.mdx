@@ -1,0 +1,54 @@
+---
+title: Delete User Tier
+description: "This endpoint is used to delete a user tier"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/user-tiers/:id",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "DELETE",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request DELETE
+'https://test-api.bvndle.com/api/v1/laas/user-tiers/07d205a5-fde5-4fc6-a886-4f0a7d647e96' \
+--header 'Content-Type: application/json' \
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "user tier deleted",
+  "data": {}
+}
+```
+
+</ResponseExample>

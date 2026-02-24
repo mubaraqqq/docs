@@ -1,0 +1,71 @@
+---
+title: Verify Tag
+description: "Call this endpoint to check the availability of a tag"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel/users/verify-tag",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+  ]}
+/>
+
+###
+
+<Table
+  data={[
+    {
+      name: "tag",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The user's tag
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/ufel/users/verify-tag?tag=j.hope' \
+--header 'Content-Type: application/json' \
+
+```
+
+###
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "Tag verified successfully",
+  "data": {
+    "availability": true,
+    "tag": "j.hope"
+  }
+}
+```
+
+</ResponseExample>

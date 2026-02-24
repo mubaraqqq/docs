@@ -1,0 +1,657 @@
+---
+title: Get Spin Wheels
+description: "This endpoint returns all the spin wheels created by the partner"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/spin-wheel",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+<Table
+  data={[
+    {
+      name: "partnerId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of the partner
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/spin-wheel?partnerId=0463c990-3b8b-4cb4-b0bc-b08aa0d88d93' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "spin wheel found successfully",
+  "data": {
+    "data": [
+      {
+        "id": "8269566e-d296-47f5-8998-4934083cdbda",
+        "name": "another spin wheel",
+        "prizes": [],
+        "isActive": true,
+        "entryFees": []
+      },
+      {
+        "id": "3a035dee-8ad5-4fed-bcec-91261dda2272",
+        "name": "another spin wheel",
+        "prizes": [
+          {
+            "id": "5bf3144c-2fe7-4223-8671-2547cf3899ef",
+            "coin": 5,
+            "title": "5 coins",
+            "probability": 10,
+            "type": "User Credit",
+            "isActive": false
+          },
+          {
+            "id": "64322e47-b639-43bc-85fa-9cef61f7fe3c",
+            "coin": 200,
+            "title": "20 coins",
+            "probability": 10,
+            "type": "User Credit",
+            "isActive": false
+          },
+          {
+            "id": "f1a1e531-82e5-4550-a469-316cd40b3776",
+            "coin": 2,
+            "title": "2 coins",
+            "probability": 50,
+            "type": "User Credit",
+            "isActive": false
+          },
+          {
+            "id": "3f174418-efd7-465c-a5eb-4bbe48dea966",
+            "coin": 10,
+            "title": "20 coins",
+            "probability": 10,
+            "type": "User Credit",
+            "isActive": false
+          },
+          {
+            "id": "3b31941f-b8fd-45dc-ae08-6256e5c42307",
+            "coin": 10,
+            "title": "20 coins",
+            "probability": 10,
+            "type": "User Credit",
+            "isActive": true
+          },
+          {
+            "id": "fd5f8983-86c4-45a7-8113-97ed6bddc973",
+            "coin": 10,
+            "title": "20 coins",
+            "probability": 10,
+            "type": "User Credit",
+            "isActive": false
+          },
+          {
+            "id": "cb46ccc6-52f3-4f3d-94f1-76719f986f3c",
+            "coin": 2,
+            "title": "2 coins",
+            "probability": 50,
+            "type": "User Credit",
+            "isActive": false
+          },
+          {
+            "id": "e6c1ac17-b9e1-4c10-a06a-63e94bcdefbc",
+            "coin": 10,
+            "title": "10 coins",
+            "probability": 20,
+            "type": "User Credit",
+            "isActive": false
+          },
+          {
+            "id": "38757c31-3ee6-4d41-9f7a-990b9aa8befe",
+            "coin": 5,
+            "title": "5 coins",
+            "probability": 20,
+            "type": "User Credit",
+            "isActive": false
+          },
+          {
+            "id": "5707d43c-9270-4137-9a4a-d5a49187bc18",
+            "coin": 2,
+            "title": "2 coins",
+            "probability": 50,
+            "type": "User Credit",
+            "isActive": false
+          },
+          {
+            "id": "b47894de-507a-409d-a1ec-c3c8594923fc",
+            "coin": 200,
+            "title": "20 coins",
+            "probability": 10,
+            "type": "User Credit",
+            "isActive": true
+          },
+          {
+            "id": "dfef8fdf-c452-461b-a838-340bb2c0d058",
+            "coin": 5,
+            "title": "5 coins",
+            "probability": 10,
+            "type": "User Credit",
+            "isActive": true
+          },
+          {
+            "id": "bc0df6d7-baa8-4f17-9b0e-37b19c722da5",
+            "coin": 10,
+            "title": "20 coins",
+            "probability": 10,
+            "type": "User Credit",
+            "isActive": true
+          },
+          {
+            "id": "58e4f239-347c-4078-8c33-70fd2973b890",
+            "coin": 200,
+            "title": "20 coins",
+            "probability": 10,
+            "type": "User Credit",
+            "isActive": true
+          },
+          {
+            "id": "aa7e2d7e-07bd-4bae-93f6-ca9b6d5f2090",
+            "coin": 2,
+            "title": "2 coins",
+            "probability": 50,
+            "type": "User Credit",
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "81daaa04-4b80-4403-b56b-a914b2d16830",
+        "name": "another spin wheel",
+        "prizes": [],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "2bdfa5b9-33bc-42d1-adcc-1ef369a5ab76",
+        "name": "another spin wheel",
+        "prizes": [],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "37b735a0-98bf-4473-afb5-edcaa0ec7546",
+        "name": "another spin wheel",
+        "prizes": [],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "ac6971cf-054e-4125-b194-cafedf29c0d5",
+        "name": "another spin wheel",
+        "prizes": [],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "535ad9d4-ae51-4c81-909c-f81595c2689f",
+        "name": "another spin wheel",
+        "prizes": [],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "089e92dd-3c81-41de-9b11-6c34a8cf7a53",
+        "name": "another spin wheel",
+        "prizes": [],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "38125fe1-062d-486d-84a9-16c6b015c570",
+        "name": "another spin wheel",
+        "prizes": [
+          {
+            "id": "8969226c-6e04-486e-b18f-69fbf048332e",
+            "coin": 20,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "e2eef3b0-b81a-4362-b092-2cff21fbe8cc",
+            "coin": 100,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "4dbe76c5-f511-41ac-b92a-1a22565f179a",
+            "coin": 0,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "7665cf9d-7de6-45c2-a4e0-6eb2a762262c",
+            "coin": 10,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "6c281a3d-63d5-41a5-a89c-991d7f1046cf",
+        "name": "another spin wheel",
+        "prizes": [
+          {
+            "id": "c55400c2-4170-4e7c-9ebf-5aaa61fb6e50",
+            "coin": 10,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "d200e9bc-7d38-4c37-90a9-d018e462021e",
+            "coin": 100,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "951604bd-6c4b-47e1-a281-4aa6e04a7613",
+            "coin": 0,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "870d472c-c05e-4de1-a8f4-4914e6420fe2",
+            "coin": 20,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "3d102368-4b36-4804-bc4d-efeda7985058",
+        "name": "another spin wheel",
+        "prizes": [
+          {
+            "id": "4324104b-aac1-4446-984e-468ecce8d48f",
+            "coin": 10,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "4ebde63e-9260-4e1e-aa7c-714fc45b650a",
+            "coin": 20,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "aaee8e08-5697-498f-8505-b81348d458b7",
+            "coin": 0,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "1061715f-450d-4989-8ea0-ef666b79afa7",
+            "coin": 100,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "4fa4ef18-275b-483b-a7d8-e7a80e920731",
+        "name": "another spin wheel",
+        "prizes": [
+          {
+            "id": "11988c0b-b123-4865-b167-07fd1e01d750",
+            "coin": 20,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "230b91ab-3288-43e3-86ae-9d2afecd34c9",
+            "coin": 100,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "ec8a1ff9-a58e-41ff-a032-8cadf7b639a2",
+            "coin": 0,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "d11b297e-6a91-45e7-9664-bb7ec9ed971d",
+            "coin": 10,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "219609df-7831-47bb-8767-645be1a3f0c3",
+        "name": "another spin wheel",
+        "prizes": [
+          {
+            "id": "1ae94bc7-9ac4-45f6-a2cd-71fc95cbcfba",
+            "coin": 10,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "6721aebd-8a98-4a4e-abb5-1450e71fd7ea",
+            "coin": 100,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "94649628-264f-462b-b5a6-66664d103026",
+            "coin": 0,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "10160683-f83e-4f9d-99b2-22ec0de62093",
+            "coin": 20,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "e1e72631-a06d-4999-bf58-e4cb644d8106",
+        "name": "another spin wheel",
+        "prizes": [],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "e9809f0d-8ba6-4302-8a20-a7ba4640b15c",
+        "name": "another spin wheel",
+        "prizes": [
+          {
+            "id": "c32380c4-92c5-454c-acb6-4769068f9289",
+            "coin": 20,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "2055fbf5-ce0f-4a6c-8e40-ebb7858a025c",
+            "coin": 30,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "03404309-7a9a-46ad-95dd-a1a556149a01",
+            "coin": 50,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "5c2f66c0-8b31-4cec-ae87-26fb1113e8be",
+        "name": "another spin wheel",
+        "prizes": [
+          {
+            "id": "203d6ad8-c5ce-4628-86d0-6385f65e06fd",
+            "coin": 100,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "59a4a63d-e4e1-4051-9c64-342d426d3eda",
+            "coin": 0,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "30b7e746-3d08-49d6-acd4-e0539651b45f",
+            "coin": 10,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "212fb35a-5079-4fd7-905c-d4bc9e073519",
+            "coin": 20,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "26320e53-70fa-4fff-81a3-db9ef29e12c1",
+        "name": "another spin wheel",
+        "prizes": [
+          {
+            "id": "c97e363e-aed1-406f-8553-4716a5e2c4a6",
+            "coin": 100,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "edc9847b-c5ab-422f-9393-60c1b9dafb3b",
+            "coin": 0,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "adafe346-6aa9-45d7-9b7a-c91a19af9098",
+            "coin": 10,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "5322c920-7e7c-4d73-b351-ac6a6744fa73",
+            "coin": 20,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "b00bca2e-02d2-4e92-9d7b-428cb37012da",
+        "name": "New spin wheel",
+        "prizes": [
+          {
+            "id": "766ea2a2-7f4c-428e-92d2-72252cd07c5d",
+            "coin": 100,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "aa9c4958-894c-4307-9c1d-0c1929125432",
+            "coin": 0,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "75075f05-4f45-4e6a-b5a9-3dd74c1f230e",
+            "coin": 10,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "0e7206a7-b017-421e-aa5d-441a42b175a7",
+            "coin": 20,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      },
+      {
+        "id": "6d42aef7-6c0b-4f11-9acc-0ddd3514f4de",
+        "name": "New spin wheel",
+        "prizes": [
+          {
+            "id": "eb010fdb-1990-4105-b9a4-242b6ca4f078",
+            "coin": 10,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "995855ce-7209-4748-bf17-bce7b45dafa8",
+            "coin": 100,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "cb834748-3565-4fe0-ad7a-adbd1eacac7d",
+            "coin": 0,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          },
+          {
+            "id": "86309902-e8c2-4c14-bec2-5cc4af8af786",
+            "coin": 20,
+            "title": null,
+            "probability": 0,
+            "type": null,
+            "isActive": true
+          }
+        ],
+        "isActive": false,
+        "entryFees": []
+      }
+    ],
+    "count": 19,
+    "currentpage": 1,
+    "nextpage": null,
+    "prevpage": null,
+    "lastpage": 1
+  }
+}
+```
+
+</ResponseExample>

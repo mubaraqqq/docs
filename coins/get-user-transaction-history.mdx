@@ -1,0 +1,131 @@
+---
+title: Get User Transaction History
+description: "This endpoint returns all the transactions performed by a user"
+---
+
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+import { Table } from "/snippets/custom-component.jsx";
+
+##
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption:
+        "https://test-api.bvndle.com/api/v1/laas/coins/get-user-transactions",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://testapi.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<Table
+  data={[
+    {
+      name: "userId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of previously onboarded user <br />
+          Query Parameter
+        </>
+      ),
+    },
+    {
+      name: "page",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          Query Parameter
+        </>
+      ),
+    },
+    {
+      name: "take",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+          Query Parameter
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/coins/get-user-transactions?userId=12erfderfvdert423452w45' \
+--header 'Content-Type: application/json' \
+
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "transaction history returned",
+  "data": {
+    "data": [
+      {
+        "id": "470893c8-b98b-4a64-be9e-d38ea1dbdbc5",
+        "userId": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "debitOrCredit": "CR",
+        "coins": 1,
+        "claimed": false,
+        "transactionType": "raffle",
+        "narration": "Bvndle Partner Reward - Raffle",
+        "from": {
+          "id": "5a706241-5c41-4c8e-bc55-e7946e227864",
+          "fullname_businessName": "beebuu",
+          "email": "iheonu6@gmail.com",
+          "tag": null,
+          "userId": "dcc1a639-906e-4393-84b7-689379fc4de8"
+        },
+        "to": {
+          "id": "b8990a62-145b-487c-85e9-c59ccf08b0f5",
+          "fullname_businessName": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+          "email": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+          "tag": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+          "userId": "d3c0c232-6e07-40eb-a1ee-593483d689c9"
+        },
+        "plan": {},
+        "paidWithGiftCard": false,
+        "giftCardLedger": {},
+        "laas": false,
+        "charge": 0,
+        "refunded": false,
+        "createdAt": "2025-04-06T21:07:01.787Z",
+        "updatedAt": "2025-04-06T21:07:01.787Z"
+      }
+    ],
+    "count": 76,
+    "currentpage": 1,
+    "nextpage": 2,
+    "prevpage": null,
+    "lastpage": 8
+  }
+}
+```
+
+</ResponseExample>

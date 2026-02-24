@@ -1,0 +1,81 @@
+---
+title: Get Started
+description: "Begin rewarding users for their Loyalty"
+---
+
+import { URLBlock } from "/snippets/url-block.mdx";
+import { ListStep } from "/snippets/list-step.mdx";
+
+<URLBlock
+  title="Are you testing"
+  url="https://test-api.bvndle.com/api/v1/laas/iam/login"
+  content={[
+    {
+      title: "Test API Key",
+      caption: <span style={{ color: "#DC5695" }}>Your API test key</span>,
+    },
+    {
+      title: "Test API secret",
+      caption: <span style={{ color: "#DC5695" }}>Your secret key</span>,
+    },
+  ]}
+  cannotCopy
+/>
+
+###
+
+<ListStep
+  number={1}
+  title="Create a Bvndle Partner Account"
+  caption={
+    <p style={{ marginBlock: 0 }}>
+      Start by registering for a Bvndle Partner Account. This gives you access
+      to Bvndle’s Loyalty-as-a-Service (LaaS) platform and the tools you’ll need
+      to integrate it into your product or service. If you haven’t registered
+      click here{" "}
+      <a href="https://partner.bvndle.com/register" target="_blank">
+        (https://partner.bvndle.com/register)
+      </a>
+    </p>
+  }
+/>
+
+##
+
+<ListStep
+  number={2}
+  title="Set Webhook URL & Token"
+  caption="Configure your webhook endpoint and authentication token. This is the 
+    URL where Bvndle will send asynchronous notifications (webhooks) once specific 
+    actions—like user onboarding —are completed. It ensures your system stays in 
+    sync with Bvndle's processing."
+/>
+
+##
+
+<ListStep
+  number={3}
+  title="Complete your KYC"
+  caption="Submit the required documentation to complete your Know Your Customer 
+    (KYC) process. This is a mandatory compliance step before you can access 
+    sensitive features or go live with your integration."
+/>
+
+##
+
+<ListStep
+  number={4}
+  title="Get your API Key and API Secret"
+  caption="Once your KYC is approved, you'll receive your API Key and Secret Key. 
+  These credentials are used to authenticate and securely access Bvndle’s API."
+/>
+
+##
+
+<ListStep
+  number={5}
+  title="Start rewarding💸"
+  caption="You’re now ready to start! Use the Bvndle API to distribute rewards 
+  such as points, vouchers, or other incentives—seamlessly integrated into your 
+  application."
+/>

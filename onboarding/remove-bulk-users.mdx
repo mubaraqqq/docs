@@ -1,0 +1,77 @@
+---
+title: User onboarding - Remove onboarded users (bulk)
+description: "Call this endpoint to remove onboarded users in bulk"
+---
+
+import { URLBlock } from "/snippets/url-block.mdx";
+import { Table } from "/snippets/custom-component.jsx";
+
+##
+
+<URLBlock
+  url="https://test-api.bvndle.com/api/v1/laas/onboard-users"
+  content={[
+    { title: "HTTP Method", caption: "DELETE" },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+####
+
+<Table
+  data={[
+    {
+      name: "users",
+      type: "Array",
+      desc: (
+        <>
+          Required <br /> Array of objects with each object containing userId of
+          the previously onboarded users {`{"userId": UUID}`}
+        </>
+      ),
+    },
+  ]}
+/>
+
+```bash cURL
+curl --request DELETE
+'https://test-api.bvndle.com/api/v1/laas/onboard-users' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer ACCESS_TOKEN'\
+--data-raw '{
+    "name": "Transaction Drive",
+    "coinValue": "10",
+    "maxNumberOfParticipant": "20000",
+    "condition": "User makes 5 transactions"
+}
+
+{
+    "userId": "f0c8c81d-13d3-4515-b40f-711ef91de094",
+}'
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "user(s) deleted successfully"
+}
+```
+
+```json Error 400
+{
+  "status": "failed",
+  "message": "invalid data provided",
+  "data": {
+    "errorType": "invalid",
+    "appErrorCode": "",
+    "error": "\"users[0].userId\" must be a valid GUID"
+  }
+}
+```
+
+</ResponseExample>

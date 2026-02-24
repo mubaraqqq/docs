@@ -1,0 +1,79 @@
+---
+title: Stop Special Campaign
+description: "This endpoint is used to stop a special campaign"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption:
+        "https://test-api.bvndle.com/api/v1/laas/special-campaigns/:id/stop",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "PUT",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request PUT
+'https://test-api.bvndle.com/api/v1/laas/special-campaigns/34d48345-18ab-4ba0-b9b7-07a7bf767666/stop' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "special campaign stopped",
+  "data": {
+    "id": "7bf6fbf0-94a1-4d13-94f8-bd5eb045309d",
+    "name": "New Special campaign",
+    "description": "Test special campaign",
+    "startDate": "2025-09-02T23:00:00.000Z",
+    "endDate": "2025-12-14T23:00:00.000Z",
+    "status": "inactive",
+    "events": [],
+    "createdAt": "2025-10-16T08:54:07.997Z",
+    "updatedAt": "2025-10-16T19:43:20.400Z"
+  }
+}{
+  "status": "success",
+  "message": "special campaign stopped",
+  "data": {
+    "id": "7bf6fbf0-94a1-4d13-94f8-bd5eb045309d",
+    "name": "New Special campaign",
+    "description": "Test special campaign",
+    "startDate": "2025-09-02T23:00:00.000Z",
+    "endDate": "2025-12-14T23:00:00.000Z",
+    "status": "inactive",
+    "events": [],
+    "createdAt": "2025-10-16T08:54:07.997Z",
+    "updatedAt": "2025-10-16T19:43:20.400Z"
+  }
+}
+```
+
+</ResponseExample>

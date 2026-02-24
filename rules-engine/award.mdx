@@ -1,0 +1,86 @@
+---
+title: "Award"
+description: "Call this endpoint to reward user after user has fulfilled specified conditions. Rule Name must have been previously created, User must have been onboarded."
+---
+
+####
+
+import { URLBlock } from "/snippets/url-block.mdx";
+
+<URLBlock
+  url="https://test-api.bvndle.com/api/v1/laas/rules/award"
+  content={[
+    { title: "HTTP Method", caption: "POST" },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+####
+
+import { Table } from "/snippets/custom-component.jsx";
+
+<Table
+  data={[
+    {
+      name: "userId",
+      type: "string",
+      desc: "Required Id of previously onboarded user",
+    },
+    {
+      name: "ruleName",
+      type: "string",
+      desc: "Required Name of a previously created rule",
+    },
+  ]}
+/>
+
+```bash cURL
+curl --request GET 'https://test-api.bvndle.com/api/v1/laas/rules/create-rule' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer ACCESS_TOKEN' \
+--data-raw '{
+    "name": "Transaction Drive",
+    "coinValue": "10",
+    "maxNumberOfParticipant": "20000",
+    "condition": "User makes 5 transactions"
+}
+{
+    "userId": "f0c8c81d-13d3-4515-b40f-711ef91de094",
+    "ruleName": "transaction drive"
+}'
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "rule award created successfully.",
+  "data": {
+    "id": "b81d1467-8d03-4f57-b1a2-2e636c3949e6",
+    "ruleId": "bddd3fec-edbd-4fd9-8519-07d4a309d395",
+    "ruleName": "edited rule name",
+    "userId": "f0c8c81d-13d3-4515-b40f-711ef91de094",
+    "awarded": true,
+    "note": null,
+    "partnerId": "e84fbe98-5dfa-4294-b39f-72ae0a5e1db4"
+  }
+}
+```
+
+```json Error 400
+{
+  "status": "failed",
+  "message": "data not found",
+  "data": {
+    "errorType": "not found",
+    "appErrorCode": "",
+    "error": "User Not Found"
+  }
+}
+```
+
+</ResponseExample>

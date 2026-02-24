@@ -1,0 +1,93 @@
+---
+title: Get a Special Campaign
+description: "This endpoint is used to get a single special campaign"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/special-campaigns/:id",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/special-campaigns/34d48345-18ab-4ba0-b9b7-07a7bf767666' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "special campaign returned",
+  "data": {
+    "id": "bec5e46c-7910-46c0-9726-c948087ced1e",
+    "name": "Special campaign 0",
+    "description": "Test special campaign",
+    "events": [
+      {
+        "id": "51db30a4-f666-43ba-a91e-5023f20043ee",
+        "spinWheel": {},
+        "mission": {
+          "id": "85b9cbda-f55c-4d5b-a9d0-d876139564b8",
+          "name": "4k yearly data purchase",
+          "description": "Recharge data daily",
+          "pointsReward": 1,
+          "startDate": "2025-09-05T23:00:00.000Z",
+          "endDate": "2025-12-14T23:00:00.000Z",
+          "createdAt": "2025-10-15T16:35:55.061Z",
+          "updatedAt": "2025-10-15T16:35:55.061Z",
+          "partner": {},
+          "requirements": [
+            "Finish your airtime",
+            "Recharge a new batch of airtime"
+          ],
+          "badge": {
+            "id": "34d48345-18ab-4ba0-b9b7-07a7bf767666",
+            "name": "shadow ninja",
+            "description": "Hello",
+            "partner": {},
+            "icon": null
+          }
+        },
+        "raffle": {},
+        "eventType": "mission",
+        "createdAt": "2025-10-15T16:35:55.076Z",
+        "updatedAt": "2025-10-15T16:35:55.076Z"
+      }
+    ],
+    "createdAt": "2025-10-15T16:35:55.011Z",
+    "updatedAt": "2025-10-15T16:35:55.011Z"
+  }
+}
+```
+
+</ResponseExample>

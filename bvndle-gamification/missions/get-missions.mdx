@@ -1,0 +1,200 @@
+---
+title: Get Missions
+description: "This endpoint returns all created missions"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/missions",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+<Table
+  data={[
+    {
+      name: "partnerId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of the partner
+        </>
+      ),
+    },
+    {
+      name: "page",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "take",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "search",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "sortDirection",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Values: desc, asc <br />
+          Default: desc
+        </>
+      ),
+    },
+    {
+      name: "startDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "endDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/missions?page=1&take=20&search=monthly&partnerId=dcc1a639-906e-4393-84b7-689379fc4de8&sortDirection=desc&startDate=2025-08-01&endDate=2025-08-30' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "missions returned",
+  "data": {
+    "data": [
+      {
+        "id": "e7854a64-f66e-459a-b8be-8ee5baabdeac",
+        "name": "20k yearly data purchase",
+        "description": "Recharge data daily",
+        "pointsReward": 1,
+        "startDate": "2025-08-05T23:00:00.000Z",
+        "endDate": "2025-08-14T23:00:00.000Z",
+        "createdAt": "2025-08-28T12:01:03.970Z",
+        "updatedAt": "2025-08-28T12:01:03.970Z",
+        "partner": {},
+        "requirements": [
+          "Finish your airtime",
+          "Recharge a new batch of airtime"
+        ]
+      },
+      {
+        "id": "fb77686c-0eda-4a1b-9587-9376c1d5c118",
+        "name": "yearly data purchase",
+        "description": "Recharge data daily",
+        "pointsReward": 1,
+        "startDate": "2025-08-05T23:00:00.000Z",
+        "endDate": "2025-08-11T23:00:00.000Z",
+        "createdAt": "2025-08-13T22:28:27.997Z",
+        "updatedAt": "2025-08-13T22:28:27.997Z",
+        "partner": {},
+        "requirements": null
+      },
+      {
+        "id": "7310c56e-6f11-4c87-b97f-cf4ee112f6b7",
+        "name": "weekly data purchase",
+        "description": "Recharge data daily",
+        "pointsReward": 1,
+        "startDate": "2025-08-05T23:00:00.000Z",
+        "endDate": "2025-08-14T23:00:00.000Z",
+        "createdAt": "2025-08-11T17:41:10.585Z",
+        "updatedAt": "2025-08-11T17:41:10.585Z",
+        "partner": {},
+        "requirements": null
+      },
+      {
+        "id": "07d205a5-fde5-4fc6-a886-4f0a7d647e96",
+        "name": "daily data purchase",
+        "description": "Recharge data daily",
+        "pointsReward": 1,
+        "startDate": "2025-08-05T23:00:00.000Z",
+        "endDate": "2025-10-14T23:00:00.000Z",
+        "createdAt": "2025-08-07T17:20:02.716Z",
+        "updatedAt": "2025-08-31T11:14:46.612Z",
+        "partner": {},
+        "requirements": null
+      },
+      {
+        "id": "6292cad2-fcd2-4b58-92ca-850ca7c64ac9",
+        "name": "monthly data purchase",
+        "description": "Recharge data monthly",
+        "pointsReward": 2,
+        "startDate": "2025-08-05T23:00:00.000Z",
+        "endDate": "2025-08-14T23:00:00.000Z",
+        "createdAt": "2025-08-06T22:43:31.045Z",
+        "updatedAt": "2025-08-06T22:44:20.693Z",
+        "partner": {},
+        "requirements": null
+      }
+    ],
+    "count": 5,
+    "currentpage": 1,
+    "nextpage": null,
+    "prevpage": null,
+    "lastpage": 1
+  }
+}
+```
+
+</ResponseExample>

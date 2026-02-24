@@ -1,0 +1,278 @@
+---
+title: Spin Wheel History
+description: "This endpoint returns the spin wheel history"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/spin-wheel/:id/history",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+<Table
+  data={[
+    {
+      name: "page",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "take",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "sortDirection",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Values: desc, asc <br />
+          Default: desc
+        </>
+      ),
+    },
+    {
+      name: "startDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "endDate",
+      type: "date",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "status",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Values: paid, unpaid
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/spin-wheel/3a035dee-8ad5-4fed-bcec-91261dda2272/history?page=1&take=10&sortDirection=desc&startDate=2025-01-01' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "spin wheel history fetched successfully",
+  "data": {
+    "data": [
+      {
+        "id": "8dd891c3-9501-48da-9f63-481fa1292a62",
+        "user": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "spin_count": 1,
+        "spinWheel": {},
+        "prize": 200,
+        "createdAt": "2025-08-31T09:44:25.063Z",
+        "updatedAt": "2025-08-31T09:44:25.063Z",
+        "noOfEntry": 1,
+        "noOfSpinsLeft": 0,
+        "hasMultipleSpins": false,
+        "entryFee": 5,
+        "entryFeeType": "coins",
+        "status": "paid"
+      },
+      {
+        "id": "9ef2caed-4291-4e97-9c6f-24de86bd2cae",
+        "user": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "spin_count": 1,
+        "spinWheel": {},
+        "prize": 10,
+        "createdAt": "2025-08-31T09:44:23.146Z",
+        "updatedAt": "2025-08-31T09:44:23.146Z",
+        "noOfEntry": 1,
+        "noOfSpinsLeft": 0,
+        "hasMultipleSpins": false,
+        "entryFee": 5,
+        "entryFeeType": "coins",
+        "status": "paid"
+      },
+      {
+        "id": "48a69cb8-b3cd-47eb-87f1-e45ac692d7bc",
+        "user": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "spin_count": 1,
+        "spinWheel": {},
+        "prize": 10,
+        "createdAt": "2025-08-31T09:43:31.621Z",
+        "updatedAt": "2025-08-31T09:43:31.621Z",
+        "noOfEntry": 1,
+        "noOfSpinsLeft": 0,
+        "hasMultipleSpins": false,
+        "entryFee": 5,
+        "entryFeeType": "coins",
+        "status": "paid"
+      },
+      {
+        "id": "a46c626d-2260-45fa-b45b-4c0c3eb73293",
+        "user": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "spin_count": 1,
+        "spinWheel": {},
+        "prize": 10,
+        "createdAt": "2025-08-31T09:43:29.083Z",
+        "updatedAt": "2025-08-31T09:43:29.083Z",
+        "noOfEntry": 1,
+        "noOfSpinsLeft": 0,
+        "hasMultipleSpins": false,
+        "entryFee": 5,
+        "entryFeeType": "coins",
+        "status": "paid"
+      },
+      {
+        "id": "af22f6f6-aa40-4830-9e3b-b11977a9eab8",
+        "user": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "spin_count": 1,
+        "spinWheel": {},
+        "prize": 10,
+        "createdAt": "2025-08-31T09:43:26.895Z",
+        "updatedAt": "2025-08-31T09:43:26.895Z",
+        "noOfEntry": 1,
+        "noOfSpinsLeft": 0,
+        "hasMultipleSpins": false,
+        "entryFee": 5,
+        "entryFeeType": "coins",
+        "status": "paid"
+      },
+      {
+        "id": "d4dae6be-a4e2-40fa-aefa-3d8731976291",
+        "user": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "spin_count": 1,
+        "spinWheel": {},
+        "prize": 10,
+        "createdAt": "2025-08-31T09:43:24.428Z",
+        "updatedAt": "2025-08-31T09:43:24.428Z",
+        "noOfEntry": 1,
+        "noOfSpinsLeft": 0,
+        "hasMultipleSpins": false,
+        "entryFee": 5,
+        "entryFeeType": "coins",
+        "status": "paid"
+      },
+      {
+        "id": "ee0eeb0f-8d21-479d-a4bd-68e1e1550976",
+        "user": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "spin_count": 1,
+        "spinWheel": {},
+        "prize": 10,
+        "createdAt": "2025-08-31T09:37:41.149Z",
+        "updatedAt": "2025-08-31T09:37:41.149Z",
+        "noOfEntry": 1,
+        "noOfSpinsLeft": 0,
+        "hasMultipleSpins": false,
+        "entryFee": 5,
+        "entryFeeType": "coins",
+        "status": "paid"
+      },
+      {
+        "id": "c24506f9-1641-4862-9e60-0a30202f9896",
+        "user": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "spin_count": 1,
+        "spinWheel": {},
+        "prize": 10,
+        "createdAt": "2025-08-31T09:36:49.889Z",
+        "updatedAt": "2025-08-31T09:36:49.889Z",
+        "noOfEntry": 1,
+        "noOfSpinsLeft": 0,
+        "hasMultipleSpins": false,
+        "entryFee": 5,
+        "entryFeeType": "coins",
+        "status": "paid"
+      },
+      {
+        "id": "4005ba84-3b60-478d-af77-8b7b56c98404",
+        "user": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "spin_count": 1,
+        "spinWheel": {},
+        "prize": 2,
+        "createdAt": "2025-08-31T09:35:22.351Z",
+        "updatedAt": "2025-08-31T09:35:22.351Z",
+        "noOfEntry": 1,
+        "noOfSpinsLeft": 0,
+        "hasMultipleSpins": false,
+        "entryFee": 5,
+        "entryFeeType": "coins",
+        "status": "paid"
+      },
+      {
+        "id": "3b107005-a2d2-494c-8236-50d5ce0bb12a",
+        "user": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+        "spin_count": 5,
+        "spinWheel": {},
+        "prize": 130,
+        "createdAt": "2025-08-17T10:35:03.811Z",
+        "updatedAt": "2025-08-17T10:35:15.077Z",
+        "noOfEntry": 5,
+        "noOfSpinsLeft": 0,
+        "hasMultipleSpins": false,
+        "entryFee": null,
+        "entryFeeType": null,
+        "status": "paid"
+      }
+    ],
+    "count": 14,
+    "currentpage": 1,
+    "nextpage": 2,
+    "prevpage": null,
+    "lastpage": 2
+  }
+}
+```
+
+</ResponseExample>

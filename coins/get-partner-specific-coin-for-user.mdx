@@ -1,0 +1,145 @@
+---
+title: Get Partner Specific Coin for User
+description: "This endpoint returns partner specific coin data for a user"
+---
+
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+
+##
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/get-user-coin-data",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://testapi.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+#####
+
+<Table
+  data={[
+    {
+      name: "userId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of previously onboarded user
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/get-user-coin-data?userId=12erfderfvdert423452w45' \
+--header 'Content-Type: application/json' \
+
+```
+
+###
+
+<NoteStatement label="SUCCESS RESPONSE" />
+#####
+
+<Table
+  data={[
+    {
+      name: "totalCoins",
+      type: "number",
+      desc: "Total number of coins the user has across all partners",
+    },
+    {
+      name: "totalPartnerCoins",
+      type: "number",
+      desc: "Total coins the user has with a particular partner",
+    },
+    {
+      name: "isLinked",
+      type: "boolean",
+      desc: "Flag to show if the user has been linked via SSO",
+    },
+    {
+      name: "wallets",
+      type: "array",
+      desc: (
+        <>
+          An array of the user wallets <br />
+          <strong>Note:</strong>The user account must have been linked for you
+          to see all wallets
+        </>
+      ),
+    },
+    {
+      name: "wallets.partner",
+      type: "string",
+      desc: "Name of the partner",
+    },
+    {
+      name: "wallets.walletId",
+      type: "string",
+      desc: "ID of the wallet",
+    },
+    {
+      name: "wallets.coins",
+      type: "number",
+      desc: "Total coin user has under the partner wallet",
+    },
+  ]}
+/>
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "laas user data retrieved successfully",
+  "data": {
+    "totalCoins": 0,
+    "totalPartnerCoins": 0,
+    "isLinked": true,
+    "wallets": [
+      {
+        "partner": "Edited Business Name",
+        "walletId": "a4d3aed8-e808-442b-95f0-5e520b6bda6c",
+        "coins": 0
+      },
+      {
+        "partner": "beebuu",
+        "walletId": null,
+        "coins": 0
+      },
+      {
+        "partner": "Edited Business Name",
+        "walletId": "57c8b4e6-450d-41b7-95c3-8815547be9fb",
+        "coins": 100
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>

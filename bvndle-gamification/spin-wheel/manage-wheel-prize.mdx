@@ -1,0 +1,281 @@
+---
+title: Manage Spin Wheel Prize
+description: "This endpoint is used to add and manage the prizes on a spin wheel"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption:
+        "https://test-api.bvndle.com/api/v1/laas/spin-wheel/:id/manage-prizes",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "transactionPin",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The transaction PIN that was created by the partner
+        </>
+      ),
+    },
+    {
+      name: "prizes",
+      type: "array",
+      desc: (
+        <>
+          Required <br />
+        </>
+      ),
+    },
+    {
+      name: "prizes.coin",
+      type: "number",
+      desc: (
+        <>
+          Required <br />
+          Amount user can be awarded
+        </>
+      ),
+    },
+    {
+      name: "prizes.title",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Title to display on the spin wheel board
+        </>
+      ),
+    },
+    {
+      name: "prizes.probability",
+      type: "number",
+      desc: (
+        <>
+          Required <br />
+          The probability percentage of the prize <br />
+          NOTE: All prizes must sum up to a probability of 100%
+        </>
+      ),
+    },
+    {
+      name: "prizes.type",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The type of award
+        </>
+      ),
+    },
+    {
+      name: "prizes.isActive",
+      type: "boolean",
+      desc: (
+        <>
+          Required <br />
+          Shows if the prize should be active or now <br />
+          Default: true
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/spin-wheel/3a035dee-8ad5-4fed-bcec-91261dda2272/manage-prizes' \
+--header 'Content-Type: application/json' \
+
+{
+    "transactionPin": "1234",
+    "prizes": [
+        {
+            "coin": 2,
+            "title": "2 coins",
+            "probability": 50,
+            "type": "User Credit",
+            "isActive": true
+        },
+        {
+            "coin": 200,
+            "title": "20 coins",
+            "probability": 30,
+            "type": "User Credit",
+            "isActive": true
+        },
+        {
+            "coin": 10,
+            "title": "20 coins",
+            "probability": 20,
+            "type": "User Credit",
+            "isActive": true
+        }
+    ]
+}
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "prize updated",
+  "data": {
+    "id": "3a035dee-8ad5-4fed-bcec-91261dda2272",
+    "name": "another spin wheel",
+    "prizes": [
+      {
+        "id": "e6c1ac17-b9e1-4c10-a06a-63e94bcdefbc",
+        "coin": 10,
+        "title": "10 coins",
+        "probability": 20,
+        "type": "User Credit",
+        "isActive": false
+      },
+      {
+        "id": "3f174418-efd7-465c-a5eb-4bbe48dea966",
+        "coin": 10,
+        "title": "20 coins",
+        "probability": 10,
+        "type": "User Credit",
+        "isActive": false
+      },
+      {
+        "id": "5bf3144c-2fe7-4223-8671-2547cf3899ef",
+        "coin": 5,
+        "title": "5 coins",
+        "probability": 10,
+        "type": "User Credit",
+        "isActive": false
+      },
+      {
+        "id": "cb46ccc6-52f3-4f3d-94f1-76719f986f3c",
+        "coin": 2,
+        "title": "2 coins",
+        "probability": 50,
+        "type": "User Credit",
+        "isActive": false
+      },
+      {
+        "id": "64322e47-b639-43bc-85fa-9cef61f7fe3c",
+        "coin": 200,
+        "title": "20 coins",
+        "probability": 10,
+        "type": "User Credit",
+        "isActive": false
+      },
+      {
+        "id": "fd5f8983-86c4-45a7-8113-97ed6bddc973",
+        "coin": 10,
+        "title": "20 coins",
+        "probability": 10,
+        "type": "User Credit",
+        "isActive": false
+      },
+      {
+        "id": "f1a1e531-82e5-4550-a469-316cd40b3776",
+        "coin": 2,
+        "title": "2 coins",
+        "probability": 50,
+        "type": "User Credit",
+        "isActive": false
+      },
+      {
+        "id": "aa7e2d7e-07bd-4bae-93f6-ca9b6d5f2090",
+        "coin": 2,
+        "title": "2 coins",
+        "probability": 50,
+        "type": "User Credit",
+        "isActive": true
+      },
+      {
+        "id": "58e4f239-347c-4078-8c33-70fd2973b890",
+        "coin": 200,
+        "title": "20 coins",
+        "probability": 10,
+        "type": "User Credit",
+        "isActive": true
+      },
+      {
+        "id": "bc0df6d7-baa8-4f17-9b0e-37b19c722da5",
+        "coin": 10,
+        "title": "20 coins",
+        "probability": 10,
+        "type": "User Credit",
+        "isActive": true
+      },
+      {
+        "id": "dfef8fdf-c452-461b-a838-340bb2c0d058",
+        "coin": 5,
+        "title": "5 coins",
+        "probability": 10,
+        "type": "User Credit",
+        "isActive": true
+      },
+      {
+        "id": "b47894de-507a-409d-a1ec-c3c8594923fc",
+        "coin": 200,
+        "title": "20 coins",
+        "probability": 10,
+        "type": "User Credit",
+        "isActive": true
+      },
+      {
+        "id": "5707d43c-9270-4137-9a4a-d5a49187bc18",
+        "coin": 2,
+        "title": "2 coins",
+        "probability": 50,
+        "type": "User Credit",
+        "isActive": false
+      },
+      {
+        "id": "38757c31-3ee6-4d41-9f7a-990b9aa8befe",
+        "coin": 5,
+        "title": "5 coins",
+        "probability": 20,
+        "type": "User Credit",
+        "isActive": false
+      }
+    ],
+    "isActive": true,
+    "entryFees": []
+  }
+}
+```
+
+</ResponseExample>

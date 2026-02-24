@@ -1,0 +1,69 @@
+---
+title: Authentication
+---
+
+import { URLBlock } from "/snippets/url-block.mdx";
+import { NoteStatement } from "/snippets/custom-component.jsx";
+
+This endpoints provides the access token needed to authenticate requests. To get a token, you need your API Key and API Secret Key.
+
+<div 
+  style={{
+    borderRadius: "8px",
+    borderColor: "#F8F8F8",
+    backgroundColor: "#F8F8F8",
+    fontSize: "13px",
+  }}
+  className="border p-6">
+  Authenticate your API calls by including your secret key in the Authorization
+  header of every request you make. You can manage your API keys from the
+  dashboard.
+
+<NoteStatement message="This endpoints provides the access token needed to authenticate requests. To get a token, you need your API Key." />
+</div>
+
+##
+
+<URLBlock
+  url="https://test-api.bvndle.com/api/v1/laas/iam/login"
+  content={[
+    { title: "HTTP Method", caption: "POST" },
+    {
+      title: "Authorization Header",
+      caption: (
+        <>
+          <p style={{ marginBlock: 0 }}>Username: API KEY</p>
+          <p style={{ marginBlock: 0 }}>Password: API SECRET</p>
+        </>
+      ),
+    },
+  ]}
+/>
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "ApiKey login successful",
+  "data": { "accessToken": "Your sample code here" }
+}
+```
+
+```json Error 401
+Unauthorized
+```
+
+```json Error 404
+{
+  "status": "failed",
+  "message": "data not found",
+  "data": {
+    "errorType": "not found",
+    "appErrorCode": "404",
+    "error": "Access keys not found please contact admin"
+  }
+}
+```
+
+</ResponseExample>

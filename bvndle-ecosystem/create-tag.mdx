@@ -1,0 +1,116 @@
+---
+title: Create Tag
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+This endpoint is used to authenticate users based on their assigned tag and password. It also verifies their association with an enterprise partner.
+
+###
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel/users/create-user-tag",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel/",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+  ]}
+/>
+
+###
+
+<Table
+  data={[
+    {
+      name: "epPartnerId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The enterprise partner Id
+        </>
+      ),
+    },
+    {
+      name: "epPartnerUserId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The onboarded userId of the enterprise partner
+        </>
+      ),
+    },
+    {
+      name: "tag",
+      type: "string",
+      desc: (
+        <>
+          Required <br />A unique tag chosen by the enterprise partner user
+        </>
+      ),
+    },
+    {
+      name: "password",
+      type: "string",
+      desc: "Required",
+    },
+    {
+      name: "email",
+      type: "string",
+      desc: "Required",
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/ufel/users/create-user-tag' \
+--header 'Content-Type: application/json' \
+
+{
+    "epPartnerId": "Sample 32 no string",
+    "epPartnerUserId": "Sample 32 no string",
+    "tag": "Sampletext",
+    "password": "Sample password",
+    "email": "test@mail.com",
+}
+
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "Tag created successfully",
+  "data": "snowdenmoss123@@@@@@@"
+}
+```
+
+```json Error 400
+{
+  "status": "failed",
+  "message": "invalid data provided",
+  "data": {
+    "errorType": "invalid",
+    "appErrorCode": "",
+    "error": "Tag Already Taken"
+  }
+}
+```
+
+</ResponseExample>

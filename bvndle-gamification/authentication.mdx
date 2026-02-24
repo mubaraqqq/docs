@@ -1,0 +1,110 @@
+---
+title: Authentication
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+Welcome to Bvndle Gamification. With our API, you can engage your users and reward them
+
+####
+
+#### Testing?
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "Test API Key",
+      caption: "BV_LIVE_JG6Z6FTFFU",
+    },
+    {
+      title: "Test API Secret",
+      caption: "4R04TCJA8TKP0TDW8E44X6AS5Y5W2ROB",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement
+  label="Description"
+  message={
+    <p style={{ marginBlock: 0, fontSize: '14px' }}>
+        This endpoints provides the access token needed to authenticate requests. To get a token, you need your API Key and API Secret Key (Testing? Use Test API Key & Test API Secret above).
+        You need to have the base64 string of “APIKEY:APISECRET”
+
+        BASE64 string of BV_LIVE_JG6Z6FTFFU:4R04TCJA8TKP0TDW8E44X6AS5Y5W2ROB is
+
+        QlZfTElWRV9KRzZaNkZURkZVOjRSMDRUQ0pBOFRLUDBURFc4RTQ0WDZBUz<br />VZNVcyUk9C
+        <br />
+        P.S: There a “:” between API Key and API Secret
+    </p>
+
+}
+/>
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/iam/login",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: (
+        <p style={{ marginBlock: 0 }}>
+          <strong>Basic Auth</strong> <br />
+          Username: API Key <br />
+          Password: API Secret
+        </p>
+      ),
+    },
+  ]}
+/>
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "ApiKey login successful",
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU4NGZiZTk4LTVkZmEtNDI5NC1iMzlmLTcyYWUwYTVlMWRiNCIsImlhdCI6MTcyMDEwOTY0MywiZXhwIjoxNzIwMTI0MDQzfQ.sU6rvIXGoBswOiPwYIiXZdMe0cAawpwuQryBmbaaRtw"
+  }
+}
+```
+
+```json Error 404
+{
+  "status": "failed",
+  "message": "data not found",
+  "data": {
+    "errorType": "not found",
+    "appErrorCode": "404",
+    "error": "Access keys not found please contact admin"
+  }
+}
+```
+
+```json Error 401
+Unauthorized
+```
+
+</ResponseExample>

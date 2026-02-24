@@ -1,0 +1,219 @@
+---
+title: Get Raffles
+description: "This endpoint returns all created raffles"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/raffles",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+<Table
+  data={[
+    {
+      name: "partnerId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of the partner
+        </>
+      ),
+    },
+    {
+      name: "page",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "take",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/raffles?partnerId=0463c990-3b8b-4cb4-b0bc-b08aa0d88d93&page=1&take=10' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "raffles returned",
+  "data": {
+    "data": [
+      {
+        "id": "2d65edee-732a-4048-ba76-50a06b299fef",
+        "name": "longest lasting streak",
+        "durationInDays": 5,
+        "partner": {},
+        "prizes": [],
+        "prize": 1,
+        "coinAmount": 1,
+        "isActive": false,
+        "startDate": "2025-04-06T11:49:55.188Z",
+        "isPaused": false
+      },
+      {
+        "id": "8af5ddaf-4f35-489d-b1c7-13dd12fb9679",
+        "name": "fastest eater",
+        "durationInDays": 3,
+        "partner": {},
+        "prizes": [],
+        "prize": 50,
+        "coinAmount": 10,
+        "isActive": false,
+        "startDate": "2025-04-06T20:32:04.403Z",
+        "isPaused": false
+      },
+      {
+        "id": "cce79214-3758-4159-a7ad-684bf82e5b99",
+        "name": "fastest eater",
+        "durationInDays": 3,
+        "partner": {},
+        "prizes": [],
+        "prize": 50,
+        "coinAmount": 10,
+        "isActive": false,
+        "startDate": "2025-04-06T17:32:23.105Z",
+        "isPaused": false
+      },
+      {
+        "id": "a29fd5e3-fbd5-494e-b0f6-8689b661964e",
+        "name": "fastest eater",
+        "durationInDays": 3,
+        "partner": {},
+        "prizes": [],
+        "prize": 50,
+        "coinAmount": 10,
+        "isActive": false,
+        "startDate": "2025-04-06T20:32:35.313Z",
+        "isPaused": false
+      },
+      {
+        "id": "b3058f6e-9d3a-437a-add0-509083511741",
+        "name": "fastest eater",
+        "durationInDays": 30,
+        "partner": {},
+        "prizes": [],
+        "prize": 1,
+        "coinAmount": 1,
+        "isActive": false,
+        "startDate": "2025-04-06T18:45:33.587Z",
+        "isPaused": false
+      },
+      {
+        "id": "ac8cfcba-66c1-40ed-8e40-616cab0f25cb",
+        "name": "fastest eater",
+        "durationInDays": 30,
+        "partner": {},
+        "prizes": [],
+        "prize": 1,
+        "coinAmount": 1,
+        "isActive": false,
+        "startDate": "2025-04-06T13:31:14.054Z",
+        "isPaused": false
+      },
+      {
+        "id": "63766ffe-1bba-45b6-8a85-e4ed96d70f33",
+        "name": "fastest eater",
+        "durationInDays": 3,
+        "partner": {},
+        "prizes": [],
+        "prize": 50,
+        "coinAmount": 10,
+        "isActive": false,
+        "startDate": "2025-06-24T10:58:03.613Z",
+        "isPaused": true
+      },
+      {
+        "id": "2febdaf7-e160-46b6-ad0b-c4148ac2c578",
+        "name": "fastest eater",
+        "durationInDays": null,
+        "partner": {},
+        "prizes": [],
+        "prize": 1,
+        "coinAmount": 10,
+        "isActive": false,
+        "startDate": "2025-09-02T23:00:00.000Z",
+        "isPaused": false
+      },
+      {
+        "id": "8480af3d-4466-4047-ac70-dcf7569cab9d",
+        "name": "fastest eater",
+        "durationInDays": null,
+        "partner": {},
+        "prizes": [],
+        "prize": 1,
+        "coinAmount": 10,
+        "isActive": false,
+        "startDate": "2025-09-02T23:00:00.000Z",
+        "isPaused": false
+      },
+      {
+        "id": "c4454d25-a3b0-49e8-b288-ee858105158b",
+        "name": "fastest eater",
+        "durationInDays": null,
+        "partner": {},
+        "prizes": [],
+        "prize": 1,
+        "coinAmount": 10,
+        "isActive": false,
+        "startDate": "2025-09-02T23:00:00.000Z",
+        "isPaused": false
+      }
+    ],
+    "count": 12,
+    "currentpage": 1,
+    "nextpage": 2,
+    "prevpage": null,
+    "lastpage": 2
+  }
+}
+```
+
+</ResponseExample>

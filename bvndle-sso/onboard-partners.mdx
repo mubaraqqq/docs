@@ -1,0 +1,240 @@
+---
+title: Onboard Partners
+description: "Call this endpoint to onboard partners to UFEL ecosystem"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel/partners",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel/",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+  ]}
+/>
+
+###
+
+<Table
+  data={[
+    {
+      name: "applicationName",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The name of the partner's application
+        </>
+      ),
+    },
+    {
+      name: "redirectUrl",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          URL to return to after exiting the authorization server. This is the
+          default returned redirectUrl (if the deviceType query param is not
+          passed when requesting an authorization code). This can be the same
+          value as either webRedirectUrl or mobileRedirectUrl
+        </>
+      ),
+    },
+    {
+      name: "webRedirectUrl",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Web URL to return to after exiting the authorization server.
+        </>
+      ),
+    },
+    {
+      name: "mobileRedirectUrl",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Mobile URL to return to after exiting the authorization server.
+        </>
+      ),
+    },
+    {
+      name: "email",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          the partner email address. To be used for login and password reset
+        </>
+      ),
+    },
+    {
+      name: "partnerName",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          The name of the partner
+        </>
+      ),
+    },
+    {
+      name: "password",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Password must contain atleast 8 characters, one uppercase, one number
+          and one special case character
+        </>
+      ),
+    },
+    {
+      name: "confirmPassword",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          must match password
+        </>
+      ),
+    },
+    {
+      name: "userDetailsUrl",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          URL to get user details by tag
+        </>
+      ),
+    },
+  ]}
+/>
+######
+
+<NoteStatement
+  label="NOTE"
+  message="The userDetailsUrl must accept a query parameter of “tag”"
+/>
+
+####
+
+The response data from the userDetailsUrl must follow this user format
+
+```bash typescript
+
+{
+  id: string;
+  fullname: string;
+  tag: string;
+  avatar: string;
+  email: string;
+  emailVerified: boolean;
+  phone: string;
+  dateOfBirth: Date;
+  countryCode: string;
+  gender: string;
+  isAdult: boolean;
+  bvn: string;
+  accountNumber: string;
+  kyc: {
+    id: string;
+    bvn: string;
+    streetAddress: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    country: string;
+    proofOfAddress: string;
+    governmentId: string;
+    userPhoto: string;
+    bvnProvided: boolean;
+    bvnValidated: boolean;
+    addressProvided: boolean;
+    addressValidated: boolean;
+    idProvided: boolean;
+    idValidated: boolean;
+    isCompleted: boolean;
+    verificationStatus: string;
+    phone: string;
+    phoneVerified: boolean;
+    phoneCodeExpiresAt: Date;
+  }
+}
+
+```
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/ufel/partners' \
+--header 'Content-Type: application/json' \
+
+{
+    "applicationName": "Anchoria",
+    "redirectUrl": "webdemoredirect.com",
+    "webRedirectUrl": "webdemoredirect.com",
+    "mobileRedirectUrl": "mobiledemoredirect.com"
+    "email": "example.testpartner4@gmail.com",
+    "partnerName": "test partner",
+    "password": "testPartner@1",
+    "confirmPassword": "testPartner@1",
+    "userDetailsUrl": "https://example.anchoria.com/api/v1/users/nesta"
+}
+
+```
+
+###
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "Partner details saved successfully",
+  "data": {
+    "id": "64d8ecb0-60d2-46f8-b56a-f85e640fd655",
+    "applicationName": "Anchoria",
+    "clientId": "f11722107d8425b1e7dd87aeb17e36da7c593ab98114345544cd52267829cae964428fcf61c1072e8c46cd391b4df3bacf6687737d79a79d457cab4bc7231664",
+    "webRedirectUrl": "webdemoredirect.com",
+    "mobileRedirectUrl": "mobiledemoredirect.com",
+    "partnerId": "dd832b19-8ffe-4b27-9bc0-4d9794a86893",
+    "redirectUrl": "webdemoredirect.com",
+    "email": "example.testpartner4@gmail.com",
+    "partnerName": "test partner",
+    "userDetailsUrl": "http://example.anchoria.com/api/v1/users/nesta"
+  }
+}
+```
+
+```json Error 400
+{
+  "status": "failed",
+  "message": "invalid data provided",
+  "data": {
+    "errorType": "invalid",
+    "appErrorCode": "Bad request",
+    "error": "\"applicationName\" is required"
+  }
+}
+```
+
+</ResponseExample>

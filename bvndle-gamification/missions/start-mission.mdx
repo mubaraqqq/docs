@@ -1,0 +1,113 @@
+---
+title: Start Mission
+description: "This endpoint starts a mission for a user"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/missions/:id/start",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Request Body" />
+<Table
+  data={[
+    {
+      name: "userId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of the onboarded user
+        </>
+      ),
+    },
+    {
+      name: "partnerId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of the partner
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/missions/07d205a5-fde5-4fc6-a886-4f0a7d647e96/start' \
+--header 'Content-Type: application/json' \
+
+{
+    "userId": "ceede6ba-bc5b-460b-a056-b28e5bce803b",
+    "partnerId": "dcc1a639-906e-4393-84b7-689379fc4de8"
+}
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "mission started",
+  "data": {
+    "id": "f923cc9c-c269-4d8b-b91f-398e8ace6e76",
+    "user": {
+      "id": "4d86fdff-f3f6-4792-8c81-ef44feac1ba7",
+      "userId": "02731314-e354-418a-8c7f-6f4b3a1ead6d",
+      "partner": {},
+      "userData": null,
+      "createdAt": "2025-03-25T21:11:38.149Z",
+      "updatedAt": "2025-03-25T21:11:38.149Z",
+      "tier": {}
+    },
+    "mission": {
+      "id": "fb77686c-0eda-4a1b-9587-9376c1d5c118",
+      "name": "yearly data purchase",
+      "description": "Recharge data daily",
+      "pointsReward": 1,
+      "startDate": "2025-08-05T23:00:00.000Z",
+      "endDate": "2025-08-14T23:00:00.000Z",
+      "createdAt": "2025-08-13T22:28:27.997Z",
+      "updatedAt": "2025-08-13T22:28:27.997Z",
+      "partner": {}
+    },
+    "progress": "in_progress",
+    "completedAt": null,
+    "createdAt": "2025-08-13T22:29:53.819Z",
+    "updatedAt": "2025-08-13T22:29:53.819Z"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,106 @@
+---
+title: "Edit Rule"
+description: "Edit created Rules with this endpoint."
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+
+<NoteStatement
+  label="PS"
+  message="You can also edit rules on your dashbaord. Rule Name must be in lower case and must be unique."
+/>
+
+####
+
+import { URLBlock } from "/snippets/url-block.mdx";
+
+<URLBlock
+  url="https://test-api.bvndle.com/api/v1/laas/rules/update-rule"
+  content={[
+    { title: "HTTP Method", caption: "POST" },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+####
+
+<Table
+  data={[
+    { name: "name", type: "string", desc: "Required Rule Name" },
+    {
+      name: "coinValue",
+      type: "string",
+      desc: "Required Amount of coin to be given",
+    },
+    {
+      name: "maxNumberOfParticipant",
+      type: "string",
+      desc: "Required Maximum Number of Participants (Number of users who can be rewarded.)",
+    },
+    {
+      name: "condition",
+      type: "string",
+      desc: "Required (if type is not combined) More instruction or condition to be fulfilled",
+    },
+    {
+      name: "status",
+      type: "string",
+      desc: "Optional \n Default: active Values: “active” or “inactive”",
+    },
+    {
+      name: "userLimitAward",
+      type: "string",
+      desc: "Optional Pass “-1” if you do not want a maximum number Default: -1",
+    },
+  ]}
+/>
+
+```bash cURL
+curl --request GET 'https://test-api.bvndle.com/api/v1/laas/rules/create-rule' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer ACCESS_TOKEN' \
+--data-raw '{
+    "name": "Transaction Drive",
+    "coinValue": "10",
+    "maxNumberOfParticipant": "20000",
+    "condition": "User makes 5 transactions"
+}
+{
+    "id": "d905d9ca-5138-43fb-b670-aecae0eea0ec",
+    "name": "Edited Rule Name",
+}'
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "rule updated successfully.",
+  "data": {
+    "id": "bddd3fec-edbd-4fd9-8519-07d4a309d395",
+    "name": "edited rule name",
+    "coinValue": "10",
+    "condition": "user writes 5 lines",
+    "maxNumberOfParticipant": "20000",
+    "status": "active"
+  }
+}
+```
+
+```json Error 400
+{
+  "status": "failed",
+  "message": "invalid data provided",
+  "data": {
+    "errorType": "invalid",
+    "appErrorCode": "Bad request",
+    "error": "\"id\" is required"
+  }
+}
+```
+
+</ResponseExample>

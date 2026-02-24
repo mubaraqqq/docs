@@ -1,0 +1,112 @@
+---
+title: Link Bvndle Tag to LAAS User Account
+description: "Call this endpoint to link the user Bvndle tag to an existing LAAS user account"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel/users/link-tag",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/ufel",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<Table
+  data={[
+    {
+      name: "clientId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          This is generated after the partner onboards on SSO
+        </>
+      ),
+    },
+    {
+      name: "epUserId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          This is the userId used to onboard the user
+        </>
+      ),
+    },
+    {
+      name: "password",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Unique tag of the user's choice.
+        </>
+      ),
+    },
+    {
+      name: "tag",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          Password must contain at least 8 characters, one uppercase, a number,
+          and a special character.
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/ufel/users/link-tag' \
+--header 'Content-Type: application/json' \
+
+{
+    "clientId": "0e45faa1385f8b3e4f2912a9fe9fddd3937b4ae52782ca5b8d644915e58de2d7ec8bf68a9fa844234e4f79ee8afd116ee35f3a9ffc6ac2d92f0a71656a6f4853",
+    "epUserId": "d3c0c232-6e07-40eb-a1ee-593483d689c9",
+    "tag": "j.hope",
+    "password": "P@ssword1"
+}
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "Successfully Linked Tag",
+  "data": {
+    "redirectUrl": "google.com"
+  }
+}
+```
+
+</ResponseExample>

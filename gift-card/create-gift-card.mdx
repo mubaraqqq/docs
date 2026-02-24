@@ -1,0 +1,118 @@
+---
+title: Create Gift Card
+description: "This endpoint creates a gift card"
+---
+
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+import { Table } from "/snippets/custom-component.jsx";
+
+##
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/coins/gift-card/create",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://testapi.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "POST",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<Table
+  data={[
+    {
+      name: "cardName",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Name of the gift card
+        </>
+      ),
+    },
+    {
+      name: "amount",
+      type: "number",
+      desc: (
+        <>
+          Required <br />
+          Coin amount of the gift card
+        </>
+      ),
+    },
+    {
+      name: "message",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          Gift card message
+        </>
+      ),
+    },
+    {
+      name: "recipients",
+      type: "Array",
+      desc: (
+        <>
+          Required <br />
+          An array of the ID of the onboarded users or the value of the user to
+          whom you want to send the gift card
+        </>
+      ),
+    },
+    {
+      name: "time",
+      type: "Date",
+      desc: (
+        <>
+          Optional <br />
+          The time you want the gift card to be created, if you wish to make it
+          at a specific time
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request POST
+'https://test-api.bvndle.com/api/v1/laas/coins/gift-card/create' \
+--header 'Content-Type: application/json' \
+
+{
+    "cardName": "User Gift Card",
+    "amount": 100,
+    "message": "User Gift Card",
+    "recipients": ["d3c0c232-6e07-40eb-a1ee-593483d689c9"],
+}
+```
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "Gift Card Created Successfully",
+  "data": {}
+}
+```
+
+</ResponseExample>

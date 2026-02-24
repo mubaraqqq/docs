@@ -1,0 +1,164 @@
+---
+title: Get User Tickets
+description: "This endpoint is used to get a user's tickets"
+---
+
+import { NoteStatement, Table } from "/snippets/custom-component.jsx";
+import { EcosystemURLBlock } from "/snippets/url-block.mdx";
+
+####
+
+<EcosystemURLBlock
+  content={[
+    {
+      title: "URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas/tickets/user",
+      color: "#6B3B90",
+    },
+    {
+      title: "Base URL",
+      caption: "https://test-api.bvndle.com/api/v1/laas",
+      color: "#6B3B90",
+    },
+    {
+      title: "HTTP Method",
+      caption: "GET",
+    },
+    {
+      title: "Authorization Header",
+      caption: "Bearer ACCESS_TOKEN",
+    },
+  ]}
+/>
+
+###
+
+<NoteStatement label="Query Parameter" />
+<Table
+  data={[
+    {
+      name: "userId",
+      type: "string",
+      desc: (
+        <>
+          Required <br />
+          ID of the user
+        </>
+      ),
+    },
+    {
+      name: "page",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "take",
+      type: "number",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "search",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "sortDirection",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          either in asc or desc but mostly asc
+        </>
+      ),
+    },
+    {
+      name: "status",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+          The status of the ticket
+        </>
+      ),
+    },
+    {
+      name: "startDate",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+    {
+      name: "endDate",
+      type: "string",
+      desc: (
+        <>
+          Optional <br />
+        </>
+      ),
+    },
+  ]}
+/>
+
+###
+
+```bash cURL
+curl --request GET
+'https://test-api.bvndle.com/api/v1/laas/tickets/user?userId=34d48345-18ab-4ba0-b9b7-07a7bf767666' \
+--header 'Content-Type: application/json' \
+
+```
+
+####
+
+<ResponseExample>
+
+```json Success
+{
+  "status": "success",
+  "message": "tickets returned",
+  "data": {
+    "data": [
+      {
+        "id": "45ccb148-f163-4a5b-b659-395014bb6fb5",
+        "user": {},
+        "ticket": {
+          "id": "36a2ed79-42fd-4ea7-b558-a4869adf726f",
+          "partner": {},
+          "status": "active",
+          "code": "6138411414",
+          "expiryDate": "2025-10-19T23:00:00.000Z",
+          "createdAt": "2025-10-04T19:15:11.321Z",
+          "updatedAt": "2025-10-04T19:15:11.321Z"
+        },
+        "isUsed": false,
+        "entrySource": "ruleAward",
+        "rewardId": "4d806345-f149-4bcc-9257-4b0afe045b6c",
+        "createdAt": "2025-10-05T20:35:23.300Z",
+        "updatedAt": "2025-10-05T20:35:23.300Z"
+      }
+    ],
+    "count": 1,
+    "currentpage": 1,
+    "nextpage": null,
+    "prevpage": null,
+    "lastpage": 1
+  }
+}
+```
+
+</ResponseExample>
